@@ -1,5 +1,8 @@
-package com.uptoser.concurrency.chapter_01.chapter_01_13;
+package com.uptoser.concurrency.chapter_01.chapter_01_13_thread_factory;
 
+/**
+ * 使用工厂类创建线程
+ */
 public class Main {
 
 	public static void main(String[] args) {

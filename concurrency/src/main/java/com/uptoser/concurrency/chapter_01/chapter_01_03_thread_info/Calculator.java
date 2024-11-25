@@ -1,4 +1,4 @@
-package com.uptoser.concurrency.chapter_01.chapter_01_03;
+package com.uptoser.concurrency.chapter_01.chapter_01_03_thread_info;
 
 public class Calculator implements Runnable {
 

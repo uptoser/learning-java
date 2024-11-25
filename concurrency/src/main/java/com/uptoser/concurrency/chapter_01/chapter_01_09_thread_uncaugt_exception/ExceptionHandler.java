@@ -4,7 +4,7 @@ import java.lang.Thread.UncaughtExceptionHandler;
 
 /**
  * Class that process the uncaught exceptions throwed in a Thread
- *
+ * 实现用来处理运行时异常的类。这个类实现UncaughtExceptionHandler接口，并实现uncaughtException()方法
  */
 public class ExceptionHandler implements UncaughtExceptionHandler {
 

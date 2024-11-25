@@ -1,4 +1,4 @@
-package com.uptoser.concurrency.chapter_01.chapter_01_12;
+package com.uptoser.concurrency.chapter_01.chapter_01_12_group_uncaught_exception;
 
 public class MyThreadGroup extends ThreadGroup {
 

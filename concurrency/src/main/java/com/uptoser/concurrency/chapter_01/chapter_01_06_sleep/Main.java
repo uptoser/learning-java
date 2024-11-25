@@ -1,11 +1,11 @@
-package com.uptoser.concurrency.chapter_01.chapter_01_06;
+package com.uptoser.concurrency.chapter_01.chapter_01_06_sleep;
 
 import java.util.concurrent.TimeUnit;
 
 /**
  * Main class of the Example. Creates a FileClock runnable object and a Thread
  * to run it. Starts the Thread, waits five seconds and interrupts it.
- *
+ * 线程的休眠和恢复
  */
 public class Main {
 

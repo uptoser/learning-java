@@ -1,4 +1,4 @@
-package com.uptoser.concurrency.chapter_01.chapter_01_11;
+package com.uptoser.concurrency.chapter_01.chapter_01_11_thread_group;
 
 public class Result {
 	private String name;

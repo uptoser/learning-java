@@ -1,4 +1,4 @@
-package com.uptoser.concurrency.chapter_01.chapter_01_07;
+package com.uptoser.concurrency.chapter_01.chapter_01_07_join;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;

@@ -1,6 +1,6 @@
-package com.uptoser.concurrency.chapter_01.chapter_01_02;
+package com.uptoser.concurrency.chapter_01.chapter_01_02_first_thread;
 
-public class Calculator implements Runnable {
+public class Calculator implements Runnable {//通过实现Runnable接口
 
 	private int number;
 

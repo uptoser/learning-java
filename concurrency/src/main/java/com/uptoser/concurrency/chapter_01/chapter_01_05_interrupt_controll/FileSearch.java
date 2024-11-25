@@ -1,4 +1,4 @@
-package com.uptoser.concurrency.chapter_01.chapter_01_05;
+package com.uptoser.concurrency.chapter_01.chapter_01_05_interrupt_controll;
 
 import java.io.File;
 
@@ -61,7 +61,6 @@ public class FileSearch implements Runnable {
 	 *             : If the thread is interrupted
 	 */
 	private void directoryProcess(File file) throws InterruptedException {
-
 		// Get the content of the directory
 		File list[] = file.listFiles();
 		if (list != null) {
@@ -75,7 +74,7 @@ public class FileSearch implements Runnable {
 				}
 			}
 		}
-		// Check the interruption
+		// Check the interruption 如果线程被中断则抛出InterruptedException异常
 		if (Thread.interrupted()) {
 			throw new InterruptedException();
 		}
@@ -95,7 +94,7 @@ public class FileSearch implements Runnable {
 			System.out.printf("%s : %s\n", Thread.currentThread().getName(), file.getAbsolutePath());
 		}
 
-		// Check the interruption
+		// Check the interruption 如果线程被中断则抛出InterruptedException异常
 		if (Thread.interrupted()) {
 			throw new InterruptedException();
 		}

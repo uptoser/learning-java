@@ -1,4 +1,4 @@
-package com.uptoser.concurrency.chapter_01.chapter_01_05;
+package com.uptoser.concurrency.chapter_01.chapter_01_05_interrupt_controll;
 
 import java.util.concurrent.TimeUnit;
 
@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
  * Main class of the example. Search for the autoexect.bat file on the Windows
  * root folder and its subfolders during ten seconds and then, interrupts the
  * Thread
+ * 线程中断的控制
  */
 public class Main {
 
@@ -26,7 +27,7 @@ public class Main {
 
 		// Wait for ten seconds
 		try {
-			TimeUnit.SECONDS.sleep(10);
+			TimeUnit.SECONDS.sleep(3);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

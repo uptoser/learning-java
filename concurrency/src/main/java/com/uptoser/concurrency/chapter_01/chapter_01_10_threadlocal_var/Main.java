@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Main class of the UnsafeTask. Creates a Runnable task and three Thread
  * objects that run it.
- *
+ * 线程局部变量的使用
  */
 public class Main {
 

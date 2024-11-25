@@ -1,4 +1,4 @@
-package com.uptoser.concurrency.chapter_01.chapter_01_11;
+package com.uptoser.concurrency.chapter_01.chapter_01_11_thread_group;
 
 import java.util.Date;
 import java.util.Random;

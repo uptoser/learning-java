@@ -24,6 +24,7 @@ public class CleanerTask extends Thread {
 	public CleanerTask(Deque<Event> deque) {
 		this.deque = deque;
 		// Establish that this is a Daemon Thread
+		// 这个方法只能在start()方法被调用之前设置，线程开始运行就不能修改。isDaemon()方法被用来检查是否是一个守护线程
 		setDaemon(true);
 	}
 
@@ -47,11 +48,9 @@ public class CleanerTask extends Thread {
 	private void clean(Date date) {
 		long difference;
 		boolean delete;
-
 		if (deque.size() == 0) {
 			return;
 		}
-
 		delete = false;
 		do {
 			Event e = deque.getLast();

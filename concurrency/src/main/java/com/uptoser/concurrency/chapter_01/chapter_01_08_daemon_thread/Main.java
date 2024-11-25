@@ -5,7 +5,7 @@ import java.util.Deque;
 
 /**
  * Main class of the example. Creates three WriterTaks and a CleanerTask
- *
+ * 守护线程的创建和运行
  */
 public class Main {
 

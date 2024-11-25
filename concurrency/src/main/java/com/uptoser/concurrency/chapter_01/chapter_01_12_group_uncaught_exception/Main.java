@@ -1,5 +1,8 @@
-package com.uptoser.concurrency.chapter_01.chapter_01_12;
+package com.uptoser.concurrency.chapter_01.chapter_01_12_group_uncaught_exception;
 
+/**
+ * 线程组中不可控的异常
+ */
 public class Main {
 
 	public static void main(String[] args) {
