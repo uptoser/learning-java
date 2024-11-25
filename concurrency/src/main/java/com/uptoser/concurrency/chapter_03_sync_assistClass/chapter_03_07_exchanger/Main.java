@@ -6,7 +6,7 @@ import java.util.concurrent.Exchanger;
 
 /**
  * Main class of the example
- *
+ * 并发任务间的数据交换
  */
 public class Main {
 

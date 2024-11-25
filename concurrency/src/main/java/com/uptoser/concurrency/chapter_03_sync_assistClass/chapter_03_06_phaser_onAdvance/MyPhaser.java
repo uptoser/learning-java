@@ -21,6 +21,8 @@ public class MyPhaser extends Phaser {
 	 */
 	@Override
 	protected boolean onAdvance(int phase, int registeredParties) {
+		//phase每完成一个阶段会加1
+		System.out.printf("phase: %d , registeredParties : %d\n",phase,registeredParties);
 		switch (phase) {
 		case 0:
 			return studentsArrived();

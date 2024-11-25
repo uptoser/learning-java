@@ -2,7 +2,7 @@ package com.uptoser.concurrency.chapter_03_sync_assistClass.chapter_03_02_semaph
 
 /**
  * Main class of the example.
- *
+ * 信号量保护一个资源的多个副本
  */
 public class Main {
 

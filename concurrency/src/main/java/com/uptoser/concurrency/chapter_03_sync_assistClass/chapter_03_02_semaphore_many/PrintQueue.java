@@ -47,6 +47,9 @@ public class PrintQueue {
 			// Get access to the semaphore. If there is one or more printers
 			// free,
 			// it will get the access to one of the printers
+			//初始化信号量对象，传入参数1代表创建二进制信号量，所以它只能保护一个共享资源的访问。
+			//如果传入第二个参数(布尔类型)代表是否为公平模式
+			// 获取信号量还有其他两个方法 1.tryAcquire()试图获取信号量 2.acquireUninterruptibly()忽略中断的
 			semaphore.acquire();
 
 			// Get the number of the free printer

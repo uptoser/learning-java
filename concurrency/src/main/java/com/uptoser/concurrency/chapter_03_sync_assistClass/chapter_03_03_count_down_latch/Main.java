@@ -3,6 +3,7 @@ package com.uptoser.concurrency.chapter_03_sync_assistClass.chapter_03_03_count_
 /**
  * Main class of the example. Create, initialize and execute all the objects
  * necessaries for the example
+ * 等待多个并发时间的完成
  *
  */
 public class Main {

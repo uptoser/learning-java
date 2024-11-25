@@ -29,7 +29,7 @@ public class Main {
 
 		// Wait for the finalization of the two threads
 		/*
-		 使用join()方法等待两个线程的终止。join方法会抛出InterruptedException异常
+		 使用join()方法等待两个线程的终止。
 		 Java提供了另外两种形式的join()方法
 		 join(long milliseconds) 当一个线程调用其他某个线程的join方法时，如果使用这个方法，就可以不必等待线程的运行终止，
 		 如果参数指定的始终已经到达，它将继续运行。

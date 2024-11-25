@@ -2,7 +2,7 @@ package com.uptoser.concurrency.chapter_03_sync_assistClass.chapter_03_06_phaser
 
 /**
  * Main class of the example
- *
+ * 并发阶段任务中的阶段切换
  */
 public class Main {
 
