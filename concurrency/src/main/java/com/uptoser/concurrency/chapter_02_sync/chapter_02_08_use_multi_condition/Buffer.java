@@ -13,11 +13,13 @@ public class Buffer {
 
 	/**
 	 * The buffer
+	 * 用来存放共享数据
 	 */
 	private LinkedList<String> buffer;
 
 	/**
 	 * Size of the buffer
+	 * buffer的长度
 	 */
 	private int maxSize;
 
@@ -34,6 +36,7 @@ public class Buffer {
 
 	/**
 	 * Attribute to control where are pending lines in the buffer
+	 * 用来表明缓冲区中是否还有数据
 	 */
 	private boolean pendingLines;
 
@@ -47,6 +50,7 @@ public class Buffer {
 		this.maxSize = maxSize;
 		buffer = new LinkedList<>();
 		lock = new ReentrantLock();
+		//通过Lock接口声明的newCondition()方法创建条件
 		lines = lock.newCondition();
 		space = lock.newCondition();
 		pendingLines = true;
@@ -62,10 +66,17 @@ public class Buffer {
 		lock.lock();
 		try {
 			while (buffer.size() == maxSize) {
+				/*
+				  await(Long time,TimeUnit unit)方法可以添加时间，等待时间过去后将退出休眠。
+				  awaitUninterruptibly()，它是不可中断的。
+				  awaitUntil(Date date),指定最后的截止日期
+				 */
+				//如果缓冲区满了则等待space(释放当前的锁)。
 				space.await();
 			}
 			buffer.offer(line);
 			System.out.printf("%s: Inserted Line: %d\n", Thread.currentThread().getName(), buffer.size());
+			//唤醒其他lines的线程
 			lines.signalAll();
 		} catch (InterruptedException e) {
 			e.printStackTrace();

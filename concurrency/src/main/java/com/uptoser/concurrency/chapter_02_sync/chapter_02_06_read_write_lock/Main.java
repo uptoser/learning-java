@@ -1,8 +1,8 @@
-package com.uptoser.concurrency.chapter_02_sync.chapter_02_06_lock_fair;
+package com.uptoser.concurrency.chapter_02_sync.chapter_02_06_read_write_lock;
 
 /**
  * Main class of the example
- *
+ * 使用读写锁实现同步数据访问
  */
 public class Main {
 

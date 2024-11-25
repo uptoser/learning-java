@@ -1,4 +1,4 @@
-package com.uptoser.concurrency.chapter_02_sync.chapter_02_x;
+package com.uptoser.concurrency.chapter_02_sync.chapter_02_03droped_sync_code_block;
 
 import java.util.Date;
 

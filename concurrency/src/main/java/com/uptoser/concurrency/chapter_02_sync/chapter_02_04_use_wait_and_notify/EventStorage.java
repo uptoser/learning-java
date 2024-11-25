@@ -32,6 +32,11 @@ public class EventStorage {
 	 * This method creates and storage an event.
 	 */
 	public synchronized void set() {
+		/*
+			当列表中的数据已经满时，使用wait()方法挂起线程
+			wait()方法只能在同步代码块中调用，如果在同步代码块之外调用将会抛出IllegalMonitorStateException异常
+			必须在while中调用wait()，并且不断查询while的条件，知道条件为真的时候才能继续
+		 */
 		while (storage.size() == maxSize) {
 			try {
 				wait();
@@ -41,6 +46,9 @@ public class EventStorage {
 		}
 		storage.add(new Date());
 		System.out.printf("Set: %d\n", storage.size());
+		/*
+		  使用notify()或notifyAll()方法唤醒因调用wait()方法进入休眠的线程
+		*/
 		notify();
 	}
 

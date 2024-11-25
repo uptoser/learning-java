@@ -2,7 +2,7 @@ package com.uptoser.concurrency.chapter_02_sync.chapter_02_05_use_lock;
 
 /**
  * Main class of the example.
- *
+ * 使用锁实现同步
  */
 public class Main {
 

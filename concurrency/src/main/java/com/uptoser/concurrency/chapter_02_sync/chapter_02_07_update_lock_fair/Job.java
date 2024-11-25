@@ -1,4 +1,4 @@
-package com.uptoser.concurrency.chapter_02_sync.chapter_02_07_use_read_write_lock;
+package com.uptoser.concurrency.chapter_02_sync.chapter_02_07_update_lock_fair;
 
 /**
  * This class simulates a job that send a document to print

@@ -2,7 +2,7 @@ package com.uptoser.concurrency.chapter_02_sync.chapter_02_08_use_multi_conditio
 
 /**
  * Main class of the example
- *
+ * 在锁中使用多条件（Multiple Condition）
  */
 public class Main {
 

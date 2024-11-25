@@ -3,7 +3,7 @@ package com.uptoser.concurrency.chapter_02_sync.chapter_02_08_use_multi_conditio
 /**
  * This class simulates a text file. It creates a defined number of random lines
  * to process them sequentially.
- *
+ * 文件模拟
  */
 public class FileMock {
 

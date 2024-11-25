@@ -1,4 +1,4 @@
-package com.uptoser.concurrency.chapter_02_sync.chapter_02_06_lock_fair;
+package com.uptoser.concurrency.chapter_02_sync.chapter_02_06_read_write_lock;
 
 /**
  * This class implements a writer that establish the prices

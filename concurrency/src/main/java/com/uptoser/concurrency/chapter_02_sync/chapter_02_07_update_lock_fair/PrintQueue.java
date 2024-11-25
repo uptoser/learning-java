@@ -1,4 +1,4 @@
-package com.uptoser.concurrency.chapter_02_sync.chapter_02_07_use_read_write_lock;
+package com.uptoser.concurrency.chapter_02_sync.chapter_02_07_update_lock_fair;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -12,6 +12,8 @@ public class PrintQueue {
 	/**
 	 * Creates a lock to control the access to the queue. With the boolean
 	 * attribute, we control the fairness of the Lock
+	 * 创建一个锁对象，构造器中的参数为fair（默认为false，它成为非公平模式。如果fair为true，成为公平模式。选取等待时间最长的）
+	 * tryLock()不收fair属性的影响。因为tryLock()是立即返回的。
 	 */
 	private final Lock queueLock = new ReentrantLock(true);
 

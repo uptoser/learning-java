@@ -2,6 +2,7 @@ package com.uptoser.concurrency.chapter_02_sync.chapter_02_04_use_wait_and_notif
 
 /**
  * Main class of the example
+ * 在同步代码中使用条件
  */
 public class Main {
 

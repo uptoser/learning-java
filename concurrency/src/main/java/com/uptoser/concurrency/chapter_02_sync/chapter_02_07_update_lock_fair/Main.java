@@ -1,8 +1,8 @@
-package com.uptoser.concurrency.chapter_02_sync.chapter_02_07_use_read_write_lock;
+package com.uptoser.concurrency.chapter_02_sync.chapter_02_07_update_lock_fair;
 
 /**
  * Main class of the example
- *
+ * 修改锁的公平性
  */
 public class Main {
 
