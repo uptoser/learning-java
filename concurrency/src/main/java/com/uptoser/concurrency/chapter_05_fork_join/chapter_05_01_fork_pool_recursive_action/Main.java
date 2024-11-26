@@ -1,4 +1,4 @@
-package com.uptoser.concurrency.chapter_05_fork_join.chapter_05_01_fork_pool;
+package com.uptoser.concurrency.chapter_05_fork_join.chapter_05_01_fork_pool_recursive_action;
 
 import java.util.List;
 import java.util.concurrent.ForkJoinPool;
@@ -33,8 +33,11 @@ public class Main {
 
 		// Write information about the pool
 		do {
+			//获取正在执行任务或窃取任务的线程个数。
 			System.out.printf("Main: Thread Count: %d\n", pool.getActiveThreadCount());
+			//返回线程从另一个线程的工作队列中窃取的任务总数的估计值。（Fork/Join框架使用的是工作窃取算法）
 			System.out.printf("Main: Thread Steal: %d\n", pool.getStealCount());
+			//返回线程池的并行度。并行度，默认为CPU核心数，最小为1。为1的时候相当于单线程执行。
 			System.out.printf("Main: Paralelism: %d\n", pool.getParallelism());
 			try {
 				TimeUnit.MILLISECONDS.sleep(5);

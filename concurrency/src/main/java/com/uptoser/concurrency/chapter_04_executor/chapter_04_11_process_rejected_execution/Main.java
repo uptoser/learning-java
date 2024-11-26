@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * Main class of the example
- *
+ * 处理执行其中被拒绝的任务
  */
 public class Main {
 

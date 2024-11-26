@@ -7,7 +7,7 @@ import java.util.concurrent.Callable;
  * This class calculates the factorial of a number. It can be executed in an
  * executor because it implements de Callable interface. The call method() will
  * return an Interger
- *
+ * 实现带有泛型Integer的Callable接口
  */
 public class FactorialCalculator implements Callable<Integer> {
 

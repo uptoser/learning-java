@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 /**
  * Main class of the example. Creates and execute ten FactorialCalculator tasks
  * in an executor controlling when they finish to write the results calculated
- *
+ * 执行任务并返回结果
  */
 public class Main {
 
@@ -34,15 +34,18 @@ public class Main {
 		for (int i = 0; i < 10; i++) {
 			Integer number = new Integer(random.nextInt(10));
 			FactorialCalculator calculator = new FactorialCalculator(number);
+			//submit()方法返回Future对象来管理任务和得到的最终结果
 			Future<Integer> result = executor.submit(calculator);
 			resultList.add(result);
 		}
 
 		// Wait for the finalization of the ten tasks
 		do {
+			//在控制台输出信息表示任务完成的数量
 			System.out.printf("Main: Number of Completed Tasks: %d\n", executor.getCompletedTaskCount());
 			for (int i = 0; i < resultList.size(); i++) {
 				Future<Integer> result = resultList.get(i);
+				//Future可以通过isDone()方法来检查任务是否已经完成
 				System.out.printf("Main: Task %d: %s\n", i, result.isDone());
 			}
 			try {
@@ -58,6 +61,7 @@ public class Main {
 			Future<Integer> result = resultList.get(i);
 			Integer number = null;
 			try {
+				//如果调用result.get()方法时Future对象控制的任务未完成，那么这个方法将一直阻塞到任务完成
 				number = result.get();
 			} catch (InterruptedException e) {
 				e.printStackTrace();

@@ -3,7 +3,7 @@ package com.uptoser.concurrency.chapter_04_executor.chapter_04_02_fixed_thread_p
 /**
  * Main class of the example. Creates a server and 100 request of the Task class
  * that sends to the server
- *
+ * 创建固定大小的线程执行器
  */
 public class Main {
 

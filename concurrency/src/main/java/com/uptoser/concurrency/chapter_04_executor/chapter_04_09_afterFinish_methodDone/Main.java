@@ -9,7 +9,9 @@ import java.util.concurrent.TimeUnit;
  * Main class of the example. Creates five tasks that wait a random period of
  * time. Waits 5 seconds and cancel all the tasks. Then, write the results of
  * that tasks that haven't been cancelled.
- *
+ * 在执行器总控制任务的完成
+ * 可以在任务结束的时候再执行一些代码
+ * FutureTask类提供了done()方法
  */
 public class Main {
 

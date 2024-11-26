@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  * Main class of the example. Send a task to the executor that will execute
  * every two seconds. Then, control the remaining time for the next execution of
  * the task
- *
+ * 在执行器中周期执行任务
  */
 public class Main {
 
@@ -30,6 +30,8 @@ public class Main {
 		Task task = new Task("Task");
 		// ScheduledFuture<?> result = executor.scheduleAtFixedRate(task, 1, 2,
 		// TimeUnit.SECONDS);
+		//initialDelay参数为任务第一次执行后的延迟时间，period参数为第二次执行的时间周期
+		//还有个scheduleWithFixedRate方法的第三个参数代表上个任务结束后的间隔时间
 		executor.scheduleAtFixedRate(task, 1, 3, TimeUnit.SECONDS);
 	}
 

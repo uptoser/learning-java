@@ -1,4 +1,4 @@
-package com.uptoser.concurrency.chapter_05_fork_join.chapter_05_02_fork_and_join;
+package com.uptoser.concurrency.chapter_05_fork_join.chapter_05_02_fork_and_join_recursive_task;
 
 import java.util.ArrayList;
 import java.util.List;

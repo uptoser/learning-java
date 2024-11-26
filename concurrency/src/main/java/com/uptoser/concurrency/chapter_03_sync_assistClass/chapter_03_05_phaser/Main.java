@@ -4,7 +4,7 @@ import java.util.concurrent.Phaser;
 
 /**
  * Main class of the example
- * 并发阶段任务的运行
+ * 并发 分阶段任务的运行
  * Phaser类
  * arriveAndAwaitAdvance()当调用该方法时，Phaser对象将减1
  * arriveAndDeregister()方法代表这个现成已经完成了当前语句，并且不会再下一个阶段中参与。

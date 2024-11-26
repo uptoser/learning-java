@@ -10,7 +10,7 @@ import java.util.concurrent.Future;
 /**
  * Main class of the example. Launch three tasks using the invokeAll() method
  * and then prints their results to the console
- *
+ * 运行多个任务并处理所有结果
  */
 public class Main {
 

@@ -12,6 +12,7 @@ import java.util.concurrent.Executors;
  * validated by one of the user validation systems, then it shows a message. If
  * both system don't validate the user, the application proccess the
  * ExecutionException throwed by the method
+ * 运行多个任务并处理第一个结果
  */
 public class Main {
 
@@ -46,6 +47,7 @@ public class Main {
 			// that finish without throw and Exception. If all the tasks throw
 			// and Exception, the
 			// method throws and ExecutionException.
+			//invokeAny()方法的返回值与call里的相同
 			result = executor.invokeAny(taskList);
 			System.out.printf("Main: Result: %s\n", result);
 		} catch (InterruptedException e) {

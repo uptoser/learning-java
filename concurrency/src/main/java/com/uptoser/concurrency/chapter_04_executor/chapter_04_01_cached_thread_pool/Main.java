@@ -3,7 +3,8 @@ package com.uptoser.concurrency.chapter_04_executor.chapter_04_01_cached_thread_
 /**
  * Main class of the example. Creates a server and 100 request of the Task class
  * that sends to the server
- *
+ * 使用执行器框架(ExecutorFramework)创建ThreadPoolExecutor对象
+ * 创建缓存线程池
  */
 public class Main {
 

@@ -17,6 +17,7 @@ public class Server {
 
 	/**
 	 * Constructor of the class. Creates the executor object
+	 * Executors.newSingleThreadExecutor()是创建一个单线程的执行器，一次只能执行一个任务
 	 */
 	public Server() {
 		executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(5);

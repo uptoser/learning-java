@@ -37,7 +37,7 @@ public class Main {
 
 		// Check if the task has thrown an Exception. If it's the case, write it
 		// to the console
-
+		//如果主任务或者子任务之一排除了异常将返回true
 		if (task.isCompletedAbnormally()) {
 			System.out.printf("Main: An exception has ocurred\n");
 			System.out.printf("Main: %s\n", task.getException());

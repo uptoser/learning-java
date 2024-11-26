@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Main class of the example. Execute a task trough an executor, waits 2 seconds
  * and then cancel the task.
- *
+ * 在执行器中取消任务
  */
 public class Main {
 
@@ -39,6 +39,7 @@ public class Main {
 
 		// Cancel the task, finishing its execution
 		System.out.printf("Main: Cancelling the Task\n");
+		//在一个正在运行的任务中，如果参数是true则取消，如果是false则不取消。
 		result.cancel(true);
 		// Verify that the task has been cancelled
 		System.out.printf("Main: Cancelled: %s\n", result.isCancelled());

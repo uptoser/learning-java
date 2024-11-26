@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Main class of the example creates all the necessary objects and throws the
  * tasks
- *
+ * 在执行器中分离任务的启动与结果的处理
  */
 public class Main {
 

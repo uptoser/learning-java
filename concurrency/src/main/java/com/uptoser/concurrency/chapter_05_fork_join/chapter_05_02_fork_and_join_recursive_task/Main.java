@@ -1,4 +1,4 @@
-package com.uptoser.concurrency.chapter_05_fork_join.chapter_05_02_fork_and_join;
+package com.uptoser.concurrency.chapter_05_fork_join.chapter_05_02_fork_and_join_recursive_task;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Main class of the example.
+ * 合并任务的结果
  */
 public class Main {
 

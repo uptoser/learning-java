@@ -7,7 +7,7 @@ import java.util.concurrent.ForkJoinTask;
 /**
  * Class that stores all the tasks that have been sent to a ForkJoinPool.
  * Provides a method for the cancellation of all the tasks
- *
+ * 由于ForkJoinPoll和ForkJoinTask的局限性，用这个TaskManager类来储存task
  */
 public class TaskManager {
 
