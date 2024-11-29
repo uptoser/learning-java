@@ -12,6 +12,7 @@
         <module>java8</module>
         <module>design-patterns</module>
         <module>concurrent</module>
+        <module>javase</module>
     </modules>
 
 </project>
