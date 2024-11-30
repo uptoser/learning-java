@@ -1,0 +1,15 @@
+package com.uptoser.java_learning.design_patterns.structural_patterns.adapter;
+
+public class Mp4Player implements AdvancedMediaPlayer {
+
+	@Override
+	public void playVlc(String fileName) {
+		//什么也不做
+	}
+
+	@Override
+	public void playMp4(String fileName) {
+		System.out.println("Playing mp4 file. Name: "+ fileName);
+	}
+
+}
