@@ -1,4 +1,4 @@
-package com.uptoser.design_patterns.behavioral_patterns.observer;
+package com.uptoser.design_patterns.behavioral_patterns.observer.group2;
 
 import java.util.Observable;
 import java.util.Observer;

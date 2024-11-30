@@ -1,4 +1,4 @@
-package com.uptoser.design_patterns.behavioral_patterns.chain_of_responsibility;
+package com.uptoser.design_patterns.behavioral_patterns.chain_of_responsibility.group2;
 
 /**
  * 责任链模式（Chain of Responsibility Pattern）为请求创建了一个接收者对象的链。

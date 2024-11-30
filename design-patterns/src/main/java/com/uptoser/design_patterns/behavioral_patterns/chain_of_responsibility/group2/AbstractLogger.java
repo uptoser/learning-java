@@ -1,4 +1,4 @@
-package com.uptoser.design_patterns.behavioral_patterns.chain_of_responsibility;
+package com.uptoser.design_patterns.behavioral_patterns.chain_of_responsibility.group2;
 
 public abstract class AbstractLogger {
     public static int INFO = 1;

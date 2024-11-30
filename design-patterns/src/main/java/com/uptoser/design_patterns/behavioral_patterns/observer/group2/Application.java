@@ -1,4 +1,4 @@
-package com.uptoser.design_patterns.behavioral_patterns.observer;
+package com.uptoser.design_patterns.behavioral_patterns.observer.group2;
 
 /**
  * @author Share 2017.9.10

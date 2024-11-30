@@ -1,4 +1,4 @@
-package com.uptoser.design_patterns.behavioral_patterns.chain_of_responsibility;
+package com.uptoser.design_patterns.behavioral_patterns.chain_of_responsibility.group2;
 
 public class ErrorLogger extends AbstractLogger {
 
