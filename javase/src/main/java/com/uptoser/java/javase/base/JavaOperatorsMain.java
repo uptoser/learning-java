@@ -3,7 +3,7 @@ package com.uptoser.java.javase.base;
 /**
  * Java运算符 Java Operators
  */
-public class JavaOperators {
+public class JavaOperatorsMain {
 
     public static void main(String[] args) {
         /*
