@@ -12,27 +12,41 @@ public class Application {
     private Application() {
     }
 
+    /**
+     * Java 8中的常用函数式接口
+     * Predicate<T>           T -> boolean
+     * Consumer<T>            T -> void
+     * Function<T, R>         T -> R
+     * Supplier<T>            () -> T
+     * UnaryOperator<T>       T -> T
+     * BinaryOperator<T>      (T, T) -> T
+     * BiPredicate<T, U>      (T, U) -> boolean
+     * BiConsumer<T, U>       (T, U) -> void
+     * BiFunction<T, U, R>    (T, U) -> R
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         //构造器
         Comparator<Apple> byWeight = (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());
         Supplier<Apple> c1 = Apple::new;
         Function<Integer, Apple> c2 = Apple::new;
-        //Predicate Test
+        //Predicate(谓词)  布尔返回类型
         Predicate<String> predicate = "1"::equals;
         List<String> filter = filter(Arrays.asList("1", "22", "333"), predicate);
-        //Consumer Test
+        //Consumer(消费者) 没有返回类型
         Consumer consumer = System.out::println;
         forEach(filter, System.out::println);
-        //Function Test
+        //Function<T, R> 接受泛型T对象，返回泛型R对象
         Function<String, Integer> function = String::length;
         List<Integer> map = map(Arrays.asList("1", "22", "333"), function);
         forEach(map, System.out::println);
 
         //比较器复合
         Comparator<Apple> c = Comparator.comparing(Apple::getWeight);
-        c.reversed();//按重量递减排序
-        //按重量递减排序 --> 进一步按国家排序
-        Comparator.comparing(Apple::getWeight).reversed().thenComparing(Apple::getCountry);
+        Comparator<Apple> reversed = c.reversed();//按重量递减排序
+        //按重量递减排序 --> 两个苹果一样重时，进一步按国家排序
+        Comparator<Apple> appleComparator = reversed.thenComparing(Apple::getCountry);
 
         //谓词复合
         Predicate<Apple> redApple = apple -> Color.Red == apple.getColor();
