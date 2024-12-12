@@ -114,4 +114,6 @@ public class ArrayMain {
         //流式编程
         Arrays.stream(arrays).filter(x->x>3).limit(3).forEach(System.out::println);
     }
+
+
 }
