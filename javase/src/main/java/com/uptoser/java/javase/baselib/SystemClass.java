@@ -3,7 +3,7 @@ package com.uptoser.java.javase.baselib;
 import java.util.Map;
 import java.util.Properties;
 
-/*
+/**
 系统类
  */
 public class SystemClass {
