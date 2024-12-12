@@ -47,10 +47,13 @@ public class WrapperClasses {
         String s5 = "llo";
         String s6 = "Hel"+"lo";
         String s7 = s4+"llo";
+        final String s8 = "He";
+        String s9 = s8+"llo";
         System.out.println(s1 == s2);//false
         System.out.println(s2 == s3);//true
         System.out.println(s2 == s6);//true  编译时就可以确定下来
         System.out.println(s7 == s3);//false  编译时s7不能被确定下来
+        System.out.println(s9 == s3);//true  final修饰时s8则直接替换成He
         System.out.println(s2 == "H"+"e"+"l"+"l"+"o");//true
         System.out.println(s1.equals(s2));//true
         /*
