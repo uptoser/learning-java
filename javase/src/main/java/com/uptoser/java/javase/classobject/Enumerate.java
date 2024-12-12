@@ -49,9 +49,11 @@ public enum Enumerate implements InterfaceMain{
         System.out.println();
     }
 
+    /**
+     * 遍历枚举
+     */
     public static void printNames() {
-        Enumerate[] values = values();
-        Arrays.stream(values).forEach(v->System.out.println(v.getName()));
+        Arrays.stream(Enumerate.values()).forEach(v->System.out.println(v.getName()));
     }
 
     public static void main(String[] args) {
