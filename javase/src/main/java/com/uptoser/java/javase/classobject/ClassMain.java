@@ -74,7 +74,6 @@ public final class ClassMain {
 
     public static void main(String[] args) {
         System.out.println(new ClassMain("黑色屋子").get());
-
         /*
         下面几个包是Java语言中的常用包。
         ➢ java.lang：这个包下包含了Java语言的核心类，如String、Math、System和Thread类等，使用这个包下的类无须使用import语句导入，系统会自动导入这个包下的所有类。
