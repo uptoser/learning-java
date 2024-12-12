@@ -1,9 +1,9 @@
 package com.uptoser.java.javase.classobject;
 
-/*
-父类
+/**
+继承
  */
-public class ParentObject {
+public class Inheritance {
     protected String name = "parent";
     private String _private = "private";//私有的变量
 
@@ -18,7 +18,7 @@ public class ParentObject {
     /*
     定义一个内部类类继承父类
      */
-    public class ChildrenObject extends ParentObject{
+    public class ChildrenObject extends Inheritance {
 
         /*
         重写父类work方法
@@ -50,7 +50,7 @@ public class ParentObject {
     }
 
     public static void main(String[] args) {
-        new ParentObject().new ChildrenObject().getChild().getParent();
+        new Inheritance().new ChildrenObject().getChild().getParent();
     }
 
 }

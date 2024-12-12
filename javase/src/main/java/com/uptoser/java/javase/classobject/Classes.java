@@ -8,7 +8,7 @@ package com.uptoser.java.javase.classobject;
  * 修饰符可以是public、final、abstract
  * 对一个类定义而言，可以包含三种最常见的成员：构造器、成员变量和方法
  */
-public final class ClassMain {
+public final class Classes {
     /*
     对定义成员变量语法格式的详细说明如下。
     ➢ 修饰符：修饰符可以省略，也可以是public、protected、private、static、final，
@@ -38,12 +38,12 @@ public final class ClassMain {
     ➢ 构造器名：构造器名必须和类名相同。
     ➢ 形参列表：和定义方法形参列表的格式完全相同。
      */
-    ClassMain(){
+    Classes(){
         this.set("白色屋子");
     }
 
     //不同的构造器
-    public ClassMain(String dogHouse){
+    public Classes(String dogHouse){
         this.set(dogHouse);
         this.set();
     }
@@ -57,7 +57,7 @@ public final class ClassMain {
      */
     public void set(String dogHouse,String... names){
         int _int;//局部变量需要显示定义初始值
-        ClassMain.dogHouse = dogHouse;
+        Classes.dogHouse = dogHouse;
         for(String name : names){
             System.out.println("形参个数可变");
         }
@@ -69,11 +69,11 @@ public final class ClassMain {
     }
 
     public String get(){
-        return ClassMain.dogHouse;
+        return Classes.dogHouse;
     }
 
     public static void main(String[] args) {
-        System.out.println(new ClassMain("黑色屋子").get());
+        System.out.println(new Classes("黑色屋子").get());
         /*
         下面几个包是Java语言中的常用包。
         ➢ java.lang：这个包下包含了Java语言的核心类，如String、Math、System和Thread类等，使用这个包下的类无须使用import语句导入，系统会自动导入这个包下的所有类。
