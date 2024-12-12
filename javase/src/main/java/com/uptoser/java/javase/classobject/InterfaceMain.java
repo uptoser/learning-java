@@ -8,7 +8,8 @@ import java.util.Arrays;
  *
  * 接口的继承和类继承不一样，接口完全支持多继承
  */
-//@FunctionalInterface
+//Java 8专门为函数式接口提供了@FunctionalInterface注解，该注解通常放在接口定义前面，该注解对程序功能没有任何作用，它用于告诉编译器执行更严格检查—检查该接口必须是函数式接口，否则编译器就会报错
+@FunctionalInterface
 public interface InterfaceMain {
     //接口里的成员变量默认是使用public static final修饰的
     int MAX = 69;//接口里定义的变量只能是常量
@@ -33,9 +34,11 @@ public interface InterfaceMain {
 //    }
 
     public static void main(String[] args) {
+        //Lambda表达式
+        InterfaceMain i = ()->System.out.println("hello");
         //局部内部类
         class J {J(InterfaceMain i){i.say();}}
-        new J(()->System.out.println("hello"));
+        new J(i);
         //匿名内部类
         new InterfaceMain() {
             @Override
