@@ -4,6 +4,7 @@ package com.uptoser.java.javase.java8.newtime;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.time.temporal.ChronoField;
 import java.util.Arrays;
 
 /**
@@ -25,5 +26,7 @@ public class DateTimeFormatterMain {
         LocalDateTime now = LocalDateTime.now();
         //依次使用不同的格式器对 LocalDateTime 进行格式化
         Arrays.stream(dateTimeFormatters).forEach(f-> System.out.println(f.format(now)));//也可以使用now.format(f)
+
+        System.out.println(LocalDateTime.parse("2008-02-24 18:09:30",DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")).get(ChronoField.YEAR));
     }
 }
