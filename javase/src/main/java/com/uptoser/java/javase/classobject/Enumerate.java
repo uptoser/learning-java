@@ -28,7 +28,9 @@ public enum Enumerate implements InterfaceMain{
         public void say() {
             super.say();
         }
-    };
+    }
+    ,
+    TEST("测试");
     //定义了一个名为name的实例变量
     private String name;
     //枚举的构造器只能用private修饰

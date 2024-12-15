@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Collection接口是List、Set和Queue接口的父接口，该接口里定义的方法既可用于操作Set集合，也可用于操作List和Queue集合。
  */
-public class Application {
+public class CollectionMain {
     /*
 Collection接口里定义了如下操作集合元素的方法。
 ➢ boolean add(Object o)：该方法用于向集合里添加一个元素。如果集合对象被添加操作改变了，则返回true。
@@ -22,7 +22,7 @@ Collection接口里定义了如下操作集合元素的方法。
 ➢ Object[] toArray()：该方法把集合转换成一个数组，所有的集合元素变成对应的数组元素。
      */
     public void collectionTest(){
-        Collection c = new ArrayList();
+        java.util.Collection c = new ArrayList();
         //添加元素
         c.add("孙悟空");
         //虽然集合里不能放基本类型的值，但Java支持自动装箱
@@ -36,7 +36,7 @@ Collection接口里定义了如下操作集合元素的方法。
                 + c.contains("孙悟空"));
         c.add("轻量级Java EE企业应用实战");
         System.out.println("c集合的元素：" + c);
-        Collection books = new HashSet();
+        java.util.Collection books = new HashSet();
         books.add("轻量级Java EE企业应用实战");
         books.add("疯狂Java讲义");
         System.out.println("c集合是否完全包含books集合？"
@@ -63,7 +63,7 @@ Collection接口里定义了如下操作集合元素的方法。
     public void iterator(){
         System.out.println("-------------------------------");
         //创建一个集合
-        Collection<String> books = new HashSet<>();
+        java.util.Collection<String> books = new HashSet<>();
         books.add("轻量级Java EE企业应用实战");
         books.add("疯狂Java讲义");
         books.add("疯狂Android讲义");
@@ -108,7 +108,7 @@ Collection接口里定义了如下操作集合元素的方法。
     }
 
     public static void main(String[] args) {
-        Application a = new Application();
+        CollectionMain a = new CollectionMain();
         a.collectionTest();
         a.iterator();
     }
