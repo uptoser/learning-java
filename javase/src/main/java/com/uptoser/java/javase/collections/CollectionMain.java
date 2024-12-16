@@ -22,7 +22,7 @@ Collection接口里定义了如下操作集合元素的方法。
 ➢ Object[] toArray()：该方法把集合转换成一个数组，所有的集合元素变成对应的数组元素。
      */
     public void collectionTest(){
-        java.util.Collection c = new ArrayList();
+        Collection c = new ArrayList();
         //添加元素
         c.add("孙悟空");
         //虽然集合里不能放基本类型的值，但Java支持自动装箱
@@ -36,7 +36,7 @@ Collection接口里定义了如下操作集合元素的方法。
                 + c.contains("孙悟空"));
         c.add("轻量级Java EE企业应用实战");
         System.out.println("c集合的元素：" + c);
-        java.util.Collection books = new HashSet();
+        Collection books = new HashSet();
         books.add("轻量级Java EE企业应用实战");
         books.add("疯狂Java讲义");
         System.out.println("c集合是否完全包含books集合？"
