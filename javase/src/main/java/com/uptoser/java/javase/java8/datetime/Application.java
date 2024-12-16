@@ -1,4 +1,4 @@
-package com.uptoser.java.javase.java8.newtime;
+package com.uptoser.java.javase.java8.datetime;
 
 import java.time.*;
 import java.time.temporal.ChronoField;

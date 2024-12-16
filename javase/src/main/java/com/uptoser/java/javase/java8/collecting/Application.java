@@ -1,4 +1,4 @@
-package com.uptoser.java.javase.java8.collection;
+package com.uptoser.java.javase.java8.collecting;
 
 import com.uptoser.java.javase.java8.stream.Dish;
 

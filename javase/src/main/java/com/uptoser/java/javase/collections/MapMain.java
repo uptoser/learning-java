@@ -63,6 +63,17 @@ public class MapMain {
         maps.put("country","中国");
         maps.put("phone","1234567");
         maps.put(null,null);
+        System.out.println("---------遍历Map1----------");
+        for(Map.Entry<String,String> map: maps.entrySet()){
+            System.out.println(map.getKey()+"-"+map.getValue());
+        }
+        System.out.println("---------遍历Map2----------");
+        //通过 maps.keySet();  和 maps.values();
+        System.out.println("---------遍历Map3----------");
+        //通过迭代器
+        Iterator<Map.Entry<String, String>> iterator = maps.entrySet().iterator();
+        System.out.println("--------------------------");
+
         //如果新的 value 覆盖了原有的 value ，该方法返回被覆盖的 value
         System.out.println(maps.put("phone","8888888"));//输出1234567
         //是否包含ager的key

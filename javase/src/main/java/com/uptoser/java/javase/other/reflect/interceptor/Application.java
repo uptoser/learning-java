@@ -1,7 +1,7 @@
-package com.uptoser.java.javase.reflect.interceptor;
+package com.uptoser.java.javase.other.reflect.interceptor;
 
-import com.uptoser.java.javase.reflect.dynamic_proxy.HelloWorld;
-import com.uptoser.java.javase.reflect.dynamic_proxy.HelloWorldImpl;
+import com.uptoser.java.javase.other.reflect.dynamic_proxy.HelloWorld;
+import com.uptoser.java.javase.other.reflect.dynamic_proxy.HelloWorldImpl;
 
 public class Application {
     public static void main(String[] args) {

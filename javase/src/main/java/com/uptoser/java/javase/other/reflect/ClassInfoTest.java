@@ -1,7 +1,7 @@
-package com.uptoser.java.javase.reflect.c;
+package com.uptoser.java.javase.other.reflect;
 
 /**
- * 通过反射查看类信息
+ * 通过反射查看类信息 TODO
  */
 public class ClassInfoTest {
     public static void main(String[] args) {

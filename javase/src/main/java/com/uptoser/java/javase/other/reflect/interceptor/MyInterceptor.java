@@ -1,4 +1,4 @@
-package com.uptoser.java.javase.reflect.interceptor;
+package com.uptoser.java.javase.other.reflect.interceptor;
 
 import java.lang.reflect.Method;
 

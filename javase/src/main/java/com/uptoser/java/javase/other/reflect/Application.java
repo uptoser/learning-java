@@ -1,7 +1,7 @@
-package com.uptoser.java.javase.reflect.a;
+package com.uptoser.java.javase.other.reflect;
 
 
-public class First {
+public class Application {
     /*
      * 当程序主动使用某个类时，如果该类还未被加载到内存中，则系统会通过加载、连接、初始化三个步骤来对该类进行初始化。
      */
@@ -31,7 +31,7 @@ public class First {
     ③ 假如类中有初始化语句，则系统依次执行这些初始化语句。
      */
     public static void main(String[] args) {
-        System.out.println(First.b);
+        System.out.println(Application.b);
         /*
         类初始化的时机
         1.创建类的实例。为某个类创建实例的方式包括：使用new操作符来创建实例，通过反射来创建实例，通过反序列化的方式来创建实例。

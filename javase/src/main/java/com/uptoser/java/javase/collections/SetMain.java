@@ -45,8 +45,6 @@ public class SetMain {
         hashSet.add(null);
 //        boolean contains = hashSet.contains("3");
         System.out.println(hashSet);
-
-        //TODO 哈希算法
         return this;
     }
 

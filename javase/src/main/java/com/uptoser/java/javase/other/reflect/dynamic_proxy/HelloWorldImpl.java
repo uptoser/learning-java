@@ -1,4 +1,4 @@
-package com.uptoser.java.javase.reflect.dynamic_proxy;
+package com.uptoser.java.javase.other.reflect.dynamic_proxy;
 
 public class HelloWorldImpl implements HelloWorld{
     @Override

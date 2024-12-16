@@ -1,4 +1,4 @@
-package com.uptoser.java.javase.reflect.dynamic_proxy;
+package com.uptoser.java.javase.other.reflect.dynamic_proxy;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
