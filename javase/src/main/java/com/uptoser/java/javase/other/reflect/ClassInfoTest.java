@@ -7,7 +7,7 @@ public class ClassInfoTest {
     public static void main(String[] args) {
         /*获取Class对象
         1.使用Class类的forName(String clazzName)静态方法
-        2.调用某个类的class属性来获取该类对应的Class对象
+        2.调用某个类的class属性来获取该类对应的Class对象  例如，Person.class
         3.调用某个对象的getClass()方法
          */
 

@@ -2,6 +2,7 @@ package com.uptoser.java.javase.baselib;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class StringMain {
     public static void main(String[] args) throws UnsupportedEncodingException {//表明尝试使用了一个Java虚拟机（JVM）不认识的字符集编码
@@ -13,7 +14,7 @@ public class StringMain {
          */
         str = new String();//创建一个包含0个字符串序列的String对象（并不是返回null）
         str = new String("Hello");//字符串直接量
-        str = new String(bytes,"UTF-8");//使用指定的字符集将指定的byte[]数组解码成一个新的String对象
+        str = new String(bytes, StandardCharsets.UTF_8);//使用指定的字符集将指定的byte[]数组解码成一个新的String对象
         str = new String(bytes, Charset.forName("GBK"));//java.nio.charset包下的类
         str = new String(chars);//指定字符数组
         System.out.println(str);
