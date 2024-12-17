@@ -30,5 +30,13 @@ public class SystemClass {
         依然是根据该对象的地址计算得到的hashCode值。所以，如果两个对象的identityHashCode值相同，
         则两个对象绝对是同一个对象
          */
+
+        /**
+         * 重定向标准输入/输出
+         * 在System类里提供了如下三个重定向标准输入/输出的方法。
+         * ➢ static void setErr(PrintStream err)：重定向 “标准”错误输出流。
+         * ➢ static void setIn(InputStream in)：重定向“标准”输入流。
+         * ➢ static void setOut(PrintStream out)：重定向 “标准”输出流。
+         */
     }
 }

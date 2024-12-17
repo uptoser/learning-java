@@ -55,12 +55,12 @@ public class StringMain {
         System.out.println(str.startsWith("QWE"));
         System.out.println(str.endsWith("y"));//返回该String对象是否以suffix结尾
         str.equalsIgnoreCase("qweRty");//忽略字符的大小写的判断是否相等
-        str = "331258911";
+        str = "331158911";
         System.out.println(str.indexOf('1'));//找出ch字符在该字符串中第一次出现的位置
         System.out.println(str.indexOf("11",3));//找出字符串在该字符串中从fromIndex开始后第一次出现的位置
         System.out.println(str.lastIndexOf('1'));//找出ch字符在该字符串中最后一次出现的位置
         str.length();//返回当前字符串长度。
-        String replace = str.replace("11", "22");//将字符串中的第一个11替换成22
+        String replace = str.replace("11", "22");//将字符串中的11替换成22
         System.out.println(replace);
         replace.toCharArray();//返回char数组
         String substring = str.substring(1, 3);//截取字符串
