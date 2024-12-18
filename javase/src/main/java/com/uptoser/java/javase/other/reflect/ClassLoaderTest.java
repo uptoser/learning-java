@@ -20,6 +20,8 @@ import java.util.Properties;
  * ➢ Extension ClassLoader：扩展类加载器。
  * ➢ System ClassLoader：系统类加载器。
  * 除了可以使用Java提供的类加载器之外，开发者也可以实现自己的类加载器，自定义的类加载器通过继承ClassLoader来实现
+ *
+ * 系统类加载器是AppClassLoader的实例，扩展类加载器PlatformClassLoader的实例。实际上，这两个类都是URLClassLoader类的实例。
  */
 public class ClassLoaderTest {
 
