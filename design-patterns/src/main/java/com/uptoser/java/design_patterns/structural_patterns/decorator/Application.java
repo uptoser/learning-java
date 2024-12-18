@@ -12,8 +12,9 @@ public class Application {
 	 * 内容：一些客户想要读取句子的时候也会得到翻译已有ReadWord.java和ReadEnglishWord.java不允许修改现有系统的代码进行扩展
 	 */
 	public static void main(String[] args) {
-		File file = new File("D:\\项目\\DesignPatterns\\src\\me\\ibeyond\\decorator_pattern\\article.txt");
-		File file2 = new File("D:\\项目\\DesignPatterns\\src\\me\\ibeyond\\decorator_pattern\\article2.txt");
+		final String CLASS_PATH = ClassLoader.getSystemResource("").getPath();
+		File file = new File(CLASS_PATH+"article.txt");
+		File file2 = new File(CLASS_PATH+"article2.txt");
 		ReadWord rw = new ReadEnglishWord();
 		Decorator rw1 = new WordDecorator(rw, file2);
 		ArrayList<String> wordList = rw1.readWord(file);
