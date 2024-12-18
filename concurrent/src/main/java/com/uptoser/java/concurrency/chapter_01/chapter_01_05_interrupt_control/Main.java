@@ -1,4 +1,4 @@
-package com.uptoser.java.concurrency.chapter_01.chapter_01_05_interrupt_controll;
+package com.uptoser.java.concurrency.chapter_01.chapter_01_05_interrupt_control;
 
 import java.util.concurrent.TimeUnit;
 
