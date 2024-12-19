@@ -12,7 +12,7 @@ public class Application {
         }
 
         /**
-         编译时处理注解 TODO
+         编译时处理注解
          APT（Annotation Processing Tool）是一种注解处理工具，它对源代码文件进行检测，
          并找出源文件所包含的注解信息，然后针对注解信息进行额外的处理
 
