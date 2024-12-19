@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 控制线程
  */
-public class ControlThread {
+public class ControlThreadMain {
 
     /**
      * Thread提供了让一个线程等待另一个线程完成的方法——join()方法。
@@ -56,7 +56,7 @@ public class ControlThread {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        ControlThread c = new ControlThread();
+        ControlThreadMain c = new ControlThreadMain();
 //        c.joinTest();
 //        c.daemonThread();
         /**
