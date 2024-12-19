@@ -18,7 +18,7 @@ import java.util.concurrent.ArrayBlockingQueue;
  * ➢ 在队列头部删除并返回删除的元素。包括remove()、poll()和take()方法。当该队列已空时，这三个方法分别会抛出异常、返回false、阻塞队列。
  * ➢ 在队列头部取出但不删除元素。包括element()和peek()方法，当队列已空时，这两个方法分别抛出异常、返回false。
  */
-public class ThreadBlockingQueueMain {
+public class JavaBlockingQueueMain {
 
     /**
      * BlockingQueue包含如下5个实现类。

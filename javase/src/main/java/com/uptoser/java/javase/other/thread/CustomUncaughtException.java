@@ -9,7 +9,7 @@ package com.uptoser.java.javase.other.thread;
  * ➢ static setDefaultUncaughtExceptionHandler(Thread.UncaughtExceptionHandler eh)：为该线程类的所有线程实例设置默认的异常处理器。
  * ➢ setUncaughtExceptionHandler(Thread.UncaughtExceptionHandler eh)：为指定的线程实例设置异常处理器。
  */
-public class ThreadUncaughtExceptionMain {
+public class CustomUncaughtException {
     /**
      * ThreadGroup类实现了Thread.UncaughtExceptionHandler接口，所以每个线程所属的线程组将会作为默认的异常处理器。
      * 当一个线程抛出未处理异常时，JVM会首先查找该异常对应的异常处理器（setUncaughtExceptionHandler()方法设置的异常处理器），
@@ -23,12 +23,12 @@ public class ThreadUncaughtExceptionMain {
         class ExceptionHandler implements Thread.UncaughtExceptionHandler {
             @Override
             public void uncaughtException(Thread t, Throwable e) {
-                System.out.printf("An exception has been captured\n");
+                System.out.printf("捕获到了异常\n");
                 System.out.printf("Thread: %s\n", t.getId());
                 System.out.printf("Exception: %s: %s\n", e.getClass().getName(), e.getMessage());
-                System.out.printf("Stack Trace: \n");
+                System.out.printf("输出栈追踪: \n");
                 e.printStackTrace(System.out);
-                System.out.printf("Thread status: %s\n", t.getState());
+                System.out.printf("线程状态: %s\n", t.getState());
             }
         }
         // 设置主线程的异常处理器

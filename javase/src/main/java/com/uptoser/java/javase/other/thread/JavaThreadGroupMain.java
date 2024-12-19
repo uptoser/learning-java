@@ -21,7 +21,7 @@ package com.uptoser.java.javase.other.thread;
  * ➢ setDaemon(boolean daemon)：把该线程组设置成后台线程组。后台线程组具有一个特征——当后台线程组的最后一个线程执行结束或最后一个线程被销毁后，后台线程组将自动销毁。
  * ➢ setMaxPriority(int pri)：设置线程组的最高优先级。
  */
-public class ThreadGroupMain {
+public class JavaThreadGroupMain {
 
     public static void main(String[] args) {
         //自定义线程类
