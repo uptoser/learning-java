@@ -83,7 +83,40 @@ public class Application {
      */
     public static void main(String[] args) throws InterruptedException {
         Application a = new Application();
-        a.threadTest();
-        a.callableTest();
+//        a.threadTest();
+//        a.callableTest();
+        System.out.println("----------------------------------");
+        /**
+         * ThreadLocal，是Thread Local Variable（线程局部变量）的意思
+         * 线程局部变量（ThreadLocal）的功用其实非常简单，就是为每一个使用该变量的线程都提供一个变量值的副本，
+         * 使每一个线程都可以独立地改变自己的副本，而不会和其他线程的副本冲突
+         * ThreadLocal类的用法非常简单，它只提供了如下三个public方法。
+         * ➢ T get()：返回此线程局部变量中当前线程副本中的值。
+         * ➢ void remove()：删除此线程局部变量中当前线程的值。
+         * ➢ void set(T value)：设置此线程局部变量中当前线程副本中的值。
+         */
+        class Account{
+            private ThreadLocal<String> name = new ThreadLocal<>();
+            public Account(String name) {this.name.set(name);}
+            public String getName(){return this.name.get();}
+            public void setName(String name) {this.name.set(name);}
+        }
+
+        final Account account = new Account("小王");
+        Runnable task = () -> {
+            String threadName = Thread.currentThread().getName();
+            for (int i = 0; i < 10; i++) {
+                if(i==5){
+                    //将账户名替换成当前线程名
+                    account.setName(threadName);
+                }
+                System.out.println(threadName+"线程的name值是："+account.getName()+":"+i);
+            }
+        };
+        new Thread(task,"小A").start();
+        new Thread(task,"小B").start();
+        Thread.sleep(100);
+        System.out.println("主"+"线程的name值是："+account.getName());
+
     }
 }
