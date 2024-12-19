@@ -6,7 +6,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * 线程安全问题
  */
-public class SynchronizationMain {
+public class BasicThreadSyncMain {
     public static Double balance = 100.0;
 
     /**
@@ -20,20 +20,20 @@ public class SynchronizationMain {
     public void synchronizedBlock() throws InterruptedException {
         for(int i=0;i<100;i++){
             Thread save = new Thread(()->{
-                synchronized (SynchronizationMain.class){
-                    SynchronizationMain.balance += 2.0;//存2元钱
+                synchronized (BasicThreadSyncMain.class){
+                    BasicThreadSyncMain.balance += 2.0;//存2元钱
                 }
             });
             Thread take = new Thread(()->{
-                synchronized (SynchronizationMain.class){
-                    SynchronizationMain.balance -= 1.0;//取1元钱
+                synchronized (BasicThreadSyncMain.class){
+                    BasicThreadSyncMain.balance -= 1.0;//取1元钱
                 }
             });
             save.start();
             take.start();
         }
         TimeUnit.SECONDS.sleep(1);
-        System.out.println("总："+ SynchronizationMain.balance);
+        System.out.println("总："+ BasicThreadSyncMain.balance);
     }
 
     /**
@@ -61,24 +61,24 @@ public class SynchronizationMain {
     public void lock() throws InterruptedException {
         for(int i=0;i<100;i++){
             Thread save = new Thread(()->{
-                SynchronizationMain.lock.lock();
-                SynchronizationMain.balance += 2.0;//存2元钱
-                SynchronizationMain.lock.unlock();
+                BasicThreadSyncMain.lock.lock();
+                BasicThreadSyncMain.balance += 2.0;//存2元钱
+                BasicThreadSyncMain.lock.unlock();
             });
             Thread take = new Thread(()->{
-                SynchronizationMain.lock.lock();
-                SynchronizationMain.balance -= 1.0;//取1元钱
-                SynchronizationMain.lock.unlock();
+                BasicThreadSyncMain.lock.lock();
+                BasicThreadSyncMain.balance -= 1.0;//取1元钱
+                BasicThreadSyncMain.lock.unlock();
             });
             save.start();
             take.start();
         }
         Thread.sleep(300);
-        System.out.println("总："+ SynchronizationMain.balance);
+        System.out.println("总："+ BasicThreadSyncMain.balance);
     }
 
     public static void main(String[] args) throws InterruptedException {
-        SynchronizationMain s = new SynchronizationMain();
+        BasicThreadSyncMain s = new BasicThreadSyncMain();
 //        s.synchronizedBlock();
         s.lock();
 
