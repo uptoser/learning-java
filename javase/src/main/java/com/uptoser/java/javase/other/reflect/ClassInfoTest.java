@@ -174,7 +174,7 @@ public class ClassInfoTest {
          */
         //获取带有一个字符串参数的构造器
         Constructor<?> constructor = clazz.getConstructor(String.class);
-        ClassInfoTest target = (ClassInfoTest)constructor.newInstance("你好世界");
+        ClassInfoTest target = (ClassInfoTest) constructor.newInstance("你好世界");
         //获取setter方法
         Method method = clazz.getMethod("info", String.class);
         method.invoke(target,"str");
@@ -187,6 +187,7 @@ public class ClassInfoTest {
         nameField.set(target , "小宁");
         // 获取类名为age的属性
         Field ageField = clazz.getDeclaredField("age");
+        System.out.println("ageField的类型为："+ageField.getType());
         // 设置通过反射访问该Field时取消访问权限检查
         ageField.setAccessible(true);
         // 调用setInt方法为p对象的age Field设置值
@@ -195,8 +196,8 @@ public class ClassInfoTest {
     }
 
     public static void main(String[] args) throws NoSuchMethodException, ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        ClassInfoTest.getClassInfo();
-        ClassInfoTest.instanceAndInvoke();
+//        ClassInfoTest.getClassInfo();
+//        ClassInfoTest.instanceAndInvoke();
 
     }
     @Override
