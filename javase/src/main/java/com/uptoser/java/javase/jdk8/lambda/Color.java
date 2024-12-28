@@ -1,4 +1,4 @@
-package com.uptoser.java.javase.java8.lambda;
+package com.uptoser.java.javase.jdk8.lambda;
 
 public enum Color {
     Green("Green"),Red("Red"),Yellow("Yellow");

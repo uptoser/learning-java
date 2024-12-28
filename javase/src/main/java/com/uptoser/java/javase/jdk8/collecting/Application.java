@@ -1,6 +1,6 @@
-package com.uptoser.java.javase.java8.collecting;
+package com.uptoser.java.javase.jdk8.collecting;
 
-import com.uptoser.java.javase.java8.stream.Dish;
+import com.uptoser.java.javase.jdk8.stream.Dish;
 
 import java.util.*;
 

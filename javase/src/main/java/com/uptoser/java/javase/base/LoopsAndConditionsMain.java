@@ -36,6 +36,9 @@ public class LoopsAndConditionsMain {
 
         /*
         switch 条件语句 Switch Statements
+        Java5 以前 switch(expr)中，expr 只能是 byte、short、char、int。
+        从 Java 5 开始，Java 中引入了枚举类型， expr 也可以是 enum 类型。
+        从 Java 7 开始，expr 还可以是字符串(String)，但是长整型(long)在目前所有的版本中都是不可以的。
         */
         Season season = Season.FALL;
         switch (season){

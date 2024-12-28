@@ -1,4 +1,4 @@
-package com.uptoser.java.javase.java8.stream;
+package com.uptoser.java.javase.jdk8.stream;
 
 //流
 public class Application2 {

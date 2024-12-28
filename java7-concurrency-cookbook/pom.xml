@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>concurrent</artifactId>
+    <artifactId>java7-concurrency-cookbook</artifactId>
     <dependencies>
         <dependency>
             <groupId>com.googlecode.multithreadedtc</groupId>

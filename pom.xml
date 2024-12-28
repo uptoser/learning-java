@@ -11,7 +11,7 @@
 
     <modules>
         <module>design-patterns</module>
-        <module>concurrent</module>
+        <module>java7-concurrency-cookbook</module>
         <module>javase</module>
     </modules>
 

@@ -1,4 +1,4 @@
-package com.uptoser.java.javase.java8.stream;
+package com.uptoser.java.javase.jdk8.stream;
 
 public class Dish {
     private final String name;
