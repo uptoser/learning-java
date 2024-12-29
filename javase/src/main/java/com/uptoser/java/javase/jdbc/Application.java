@@ -1,5 +1,7 @@
 package com.uptoser.java.javase.jdbc;
 
+import java.sql.*;
+
 /**
  * JDBC的全称是Java Database Connectivity，即Java数据库连接，它是一种可以执行SQL语句的Java API
  * 数据库驱动程序是JDBC程序和数据库之间的转换层，数据库驱动程序负责将JDBC调用映射成特定的数据库调用
@@ -25,4 +27,79 @@ package com.uptoser.java.javase.jdbc;
  * ➢ 事务控制语句：主要由commit、rollback和savepoint三个关键字完成。
  */
 public class Application {
+    /**
+     * Java支持JDBC 4.2标准，JDBC 4.2在原有JDBC标准上增加了一些新特性。下面介绍这些JDBC API时会提到Java 8新增的功能。
+     * ➢ DriverManager：用于管理JDBC驱动的服务类。程序中使用该类的主要功能是获取Connection对象，该类包含如下方法。
+     * • public static synchronized Connection getConnection(String url, String user, String pass) throws SQLException：该方法获得url对应数据库的连接。
+     * ➢ Connection：代表数据库连接对象，每个Connection代表一个物理连接会话。要想访问数据库，必须先获得数据库连接。该接口的常用方法如下。
+     * • Statement createStatement() throws SQLException：该方法返回一个Statement对象。
+     * • PreparedStatement prepareStatement(String sql) throws SQLException：该方法返回预编译的Statement对象，即将SQL语句提交到数据库进行预编译。
+     * • CallableStatement prepareCall(String sql) throws SQLException：该方法返回CallableStatement对象，该对象用于调用存储过程。
+     * 上面三个方法都返回用于执行SQL语句的Statement对象，PreparedStatement、CallableStatement是Statement的子类，只有获得了Statement之后才可执行SQL语句。
+     * 除此之外，Connection还有如下几个用于控制事务的方法。
+     * ➢ Savepoint setSavepoint()：创建一个保存点。
+     * ➢ Savepoint setSavepoint(String name)：以指定名字来创建一个保存点。
+     * ➢ void setTransactionIsolation(int level)：设置事务的隔离级别。
+     * ➢ void rollback()：回滚事务。
+     * ➢ void rollback(Savepoint savepoint)：将事务回滚到指定的保存点。
+     * ➢ void setAutoCommit(boolean autoCommit)：关闭自动提交，打开事务。
+     * ➢ void commit()：提交事务。
+     *
+     * ➢ PreparedStatement：预编译的Statement对象。
+     * PreparedStatement是Statement的子接口，它允许数据库预编译SQL语句（这些SQL语句通常带有参数），
+     * 以后每次只改变SQL命令的参数，避免数据库每次都需要编译SQL语句，因此性能更好。相对于Statement而言，
+     * 使用PreparedStatement执行SQL语句时，无须再传入SQL语句，只要为预编译的SQL语句传入参数值即可。
+     * 所以它比Statement多了如下方法。
+     * • void setXxx（int parameterIndex，Xxx value）：该方法根据传入参数值的类型不同，需要使用不同的方法。
+     * 传入的值根据索引传给SQL语句中指定位置的参数。
+     *
+     * ➢ ResultSet：结果集对象。该对象包含访问查询结果的方法，ResultSet可以通过列索引或列名获得列数据。
+     * 它包含了如下常用方法来移动记录指针。
+     * • void close()：释放ResultSet对象。
+     * • boolean absolute（int row）：将结果集的记录指针移动到第row行，如果row是负数，则移动到倒数第row行。
+     * 如果移动后的记录指针指向一条有效记录，则该方法返回true。
+     * • void beforeFirst()：将ResultSet的记录指针定位到首行之前，
+     * 这是ResultSet结果集记录指针的初始状态—记录指针的起始位置位于第一行之前。
+     * • boolean first()：将ResultSet的记录指针定位到首行。如果移动后的记录指针指向一条有效记录，则该方法返回true。
+     * • boolean previous()：将ResultSet的记录指针定位到上一行。如果移动后的记录指针指向一条有效记录，则该方法返回true。
+     * • boolean next()：将ResultSet的记录指针定位到下一行，如果移动后的记录指针指向一条有效记录，则该方法返回true。
+     * • boolean last()：将ResultSet的记录指针定位到最后一行，如果移动后的记录指针指向一条有效记录，则该方法返回true。
+     * • void afterLast()：将ResultSet的记录指针定位到最后一行之后。
+     *
+     */
+    public static void main(String[] args) throws ClassNotFoundException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        try(
+                // 2.使用DriverManager获取数据库连接,
+                // 其中返回的Connection就代表了Java程序和数据库的连接
+                // 不同数据库的URL写法需要查驱动文档知道，用户名、密码由DBA分配
+                Connection conn = DriverManager.getConnection(
+                        "jdbc:mysql://192.168.3.200:3306/employees"
+                        , "mysql" , "mysql");
+                // 3.使用Connection来创建一个Statment对象
+                Statement stmt = conn.createStatement();
+                // 4.执行SQL语句
+			/*
+			Statement有三种执行sql语句的方法：
+			1 execute 可执行任何SQL语句。- 返回一个boolean值，
+			  如果执行后第一个结果是ResultSet，则返回true，否则返回false
+			2 executeQuery 执行Select语句 － 返回查询到的结果集
+			3 executeUpdate 用于执行DML语句。－ 返回一个整数，
+			  代表被SQL语句影响的记录条数
+			*/
+                ResultSet rs = stmt.executeQuery("select * from account"))
+        {
+            // ResultSet有系列的getXxx(列索引 | 列名)，用于获取记录指针
+            // 指向行、特定列的值，不断地使用next()将记录指针下移一行，
+            // 如果移动之后记录指针依然指向有效行，则next()方法返回true。
+            while(rs.next())
+            {
+                System.out.println(rs.getInt(1) + "\t"
+                        + rs.getString(2) + "\t"
+                        + rs.getString(3));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
