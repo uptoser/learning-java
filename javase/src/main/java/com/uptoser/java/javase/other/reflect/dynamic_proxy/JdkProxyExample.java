@@ -44,8 +44,23 @@ public class JdkProxyExample implements InvocationHandler {
     //测试jdk动态代理
     public static void main(String[] args) {
         JdkProxyExample jdk = new JdkProxyExample();
-        HelloWorld proxy = (HelloWorld) jdk.bind(new HelloWorldImpl());
+        HelloWorld proxyObj = (HelloWorld) jdk.bind(new HelloWorldImpl());
         //使用代理对象
-        proxy.sayHelloWorld();
+        System.out.println(proxyObj.sayHelloWorld());
+
+        //使用Lambda表达式设置jdk动态代理
+        HelloWorld proxyObj2 = (HelloWorld) Proxy.newProxyInstance(
+                HelloWorld.class.getClassLoader(),
+                new Class[]{HelloWorld.class},
+                (proxy1,method1,args1)->{
+                    System.out.println("Before method: " + method1.getName());
+                    Integer result = 1;
+                    // 这里可以添加实际的方法实现
+                    System.out.println("After method: " + method1.getName());
+                    return result;
+                }
+        );
+        System.out.println(proxyObj2.sayHelloWorld());
+
     }
 }
