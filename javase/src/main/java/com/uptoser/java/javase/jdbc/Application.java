@@ -66,6 +66,11 @@ public class Application {
      * • boolean last()：将ResultSet的记录指针定位到最后一行，如果移动后的记录指针指向一条有效记录，则该方法返回true。
      * • void afterLast()：将ResultSet的记录指针定位到最后一行之后。
      *
+     * ➢ CallableStatement： 调用存储过程
+     * 可以通过Connection的prepareCall()方法来创建CallableStatement对象，创建该对象时需要传入调用存储过程的SQL语句{call过程名(?, ?, ?...)}
+     * 可以通过CallableStatement的setXxx()方法为传入参数设置值
+     * CallableStatement需要调用registerOutParameter()方法来注册该参数
+     *
      */
     public static void main(String[] args) throws ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -78,7 +83,10 @@ public class Application {
                         , "mysql" , "mysql");
                 // 3.使用Connection来创建一个Statment对象
                 Statement stmt = conn.createStatement();
-                // 4.执行SQL语句
+
+
+        ){
+            // 4.执行SQL语句
 			/*
 			Statement有三种执行sql语句的方法：
 			1 execute 可执行任何SQL语句。- 返回一个boolean值，
@@ -87,16 +95,26 @@ public class Application {
 			3 executeUpdate 用于执行DML语句。－ 返回一个整数，
 			  代表被SQL语句影响的记录条数
 			*/
-                ResultSet rs = stmt.executeQuery("select * from account"))
-        {
-            // ResultSet有系列的getXxx(列索引 | 列名)，用于获取记录指针
+            long l = stmt.executeLargeUpdate("update account set balance=balance+100 where id = '1'");
+            long l2 = stmt.executeLargeUpdate("CREATE TABLE tmp_table (id int ,name varchar(5))");
+            System.out.println("LONG："+l2);
+            int i = stmt.executeUpdate("DROP TABLE tmp_table");
+            System.out.println("INT:"+i);
+            System.out.println("update语句返回的行数为："+l);
+            ResultSet rs = stmt.executeQuery("select * from account");
+
+            System.out.println("id" + "\t"+ "account" + "\t"+ "balance");
+            //ResultSetMetaData是用于分析结果集的元数据接口
+            ResultSetMetaData metaData = rs.getMetaData();
+            int columnCount = metaData.getColumnCount();
             // 指向行、特定列的值，不断地使用next()将记录指针下移一行，
             // 如果移动之后记录指针依然指向有效行，则next()方法返回true。
-            while(rs.next())
-            {
-                System.out.println(rs.getInt(1) + "\t"
-                        + rs.getString(2) + "\t"
-                        + rs.getString(3));
+            while(rs.next()){
+                for (int j = 0; j < columnCount; j++) {
+                    // ResultSet有系列的getXxx(列索引 | 列名)，用于获取记录指针
+                    System.out.print(rs.getString(j+1)+"\t");
+                }
+                System.out.println();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
