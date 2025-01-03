@@ -34,6 +34,7 @@ public class PreparedStatementMain {
             stmt.setInt(2,0);
             System.out.println("第"+i+"条的执行状态："+(stmt.executeUpdate()>0?true:false));
         }
+        stmt.close();
         conn.close();
     }
 

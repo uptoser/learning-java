@@ -101,10 +101,16 @@ public class Application {
             int i = stmt.executeUpdate("DROP TABLE tmp_table");
             System.out.println("INT:"+i);
             System.out.println("update语句返回的行数为："+l);
-            ResultSet rs = stmt.executeQuery("select * from account");
 
+            ResultSet rs = stmt.executeQuery("select * from account");
             System.out.println("id" + "\t"+ "account" + "\t"+ "balance");
-            //ResultSetMetaData是用于分析结果集的元数据接口
+            /*
+            ResultSetMetaData是用于分析结果集的元数据接口
+            常用的方法有如下三个。
+            ➢ int getColumnCount()：返回该ResultSet的列数量。
+            ➢ String getColumnName(int column)：返回指定索引的列名。
+            ➢ int getColumnType(int column)：返回指定索引的列类型。
+             */
             ResultSetMetaData metaData = rs.getMetaData();
             int columnCount = metaData.getColumnCount();
             // 指向行、特定列的值，不断地使用next()将记录指针下移一行，
@@ -116,6 +122,7 @@ public class Application {
                 }
                 System.out.println();
             }
+            rs.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

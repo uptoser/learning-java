@@ -28,6 +28,7 @@ public class CallableStatementMain {
         //获取返回参数
         System.out.println("角色的数量为："+stmt.getInt(2));
         System.out.println("日期为："+new SimpleDateFormat("yyyy-MM-dd").format(stmt.getDate(3)));
+        stmt.close();
         conn.close();
     }
 }
