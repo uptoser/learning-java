@@ -2,54 +2,20 @@ package com.uptoser.java.design_patterns.creational_patterns.abstract_factory;
 
 
 /**
- * @author Terry Roy 2022-08-02
+ * 抽象工厂模式（别名：配套）提供一个创建一系列或相互依赖对象的接口，而无须指定它们具体的类。
+ *
+ * Abstract Factory Pattern(Another Name: Kit)
+ * Provide an interface for creating families of related or dependent objects without
+ * specifying their concrete classes.
  */
 public class Application {
-	/*
-	 * 抽象工厂模式
-	 */
+
 	public static void main(String[] args) {
-		//获取形状工厂
-		AbstractFactory shapeFactory = FactoryProducer.getFactory("SHAPE");
-
-		//获取形状为 Circle 的对象
-		Shape shape1 = shapeFactory.getShape("CIRCLE");
-
-		//调用 Circle 的 draw 方法
-		shape1.draw();
-
-		//获取形状为 Rectangle 的对象
-		Shape shape2 = shapeFactory.getShape("RECTANGLE");
-
-		//调用 Rectangle 的 draw 方法
-		shape2.draw();
-
-		//获取形状为 Square 的对象
-		Shape shape3 = shapeFactory.getShape("SQUARE");
-
-		//调用 Square 的 draw 方法
-		shape3.draw();
-
-		//获取颜色工厂
-		AbstractFactory colorFactory = FactoryProducer.getFactory("COLOR");
-
-		//获取颜色为 Red 的对象
-		Color color1 = colorFactory.getColor("RED");
-
-		//调用 Red 的 fill 方法
-		color1.fill();
-
-		//获取颜色为 Green 的对象
-		Color color2 = colorFactory.getColor("GREEN");
-
-		//调用 Green 的 fill 方法
-		color2.fill();
-
-		//获取颜色为 Blue 的对象
-		Color color3 = colorFactory.getColor("BLUE");
-
-		//调用 Blue 的 fill 方法
-		color3.fill();
+		Shop shop=new Shop();
+		ClothesFactory factory=new BeijingClothesFactory();
+		shop.giveSuit(factory,110,82,170);
+		factory=new ShanghaiClothesFactory();
+		shop.giveSuit(factory,120,88,180);
 	}
 
 
