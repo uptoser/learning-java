@@ -3,11 +3,10 @@ package com.uptoser.java.design_patterns.behavioral_patterns.observer.group2;
 import java.util.Observable;
 
 public class ComputerShop extends Observable {
-
 	private String computerName;
 	private double Price;
 	private int level;
-	
+
 	public void getMsg(){
 		notifyObservers();
 	}
@@ -33,7 +32,5 @@ public class ComputerShop extends Observable {
 		setChanged();
 		this.level = level;
 	}
-
-	
 
 }

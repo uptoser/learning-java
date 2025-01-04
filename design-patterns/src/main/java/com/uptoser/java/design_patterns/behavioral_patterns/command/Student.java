@@ -1,5 +1,8 @@
 package com.uptoser.java.design_patterns.behavioral_patterns.command;
 
+/**
+ * 学生类：相关于命令模式中的Receiver接收者
+ */
 public class Student {
 	private String name;
 	private boolean state;//true为已上交作业
@@ -13,6 +16,8 @@ public class Student {
 		if(!state){
 			state = !state;
 			System.out.println(name+"上交了作业");
+		}else{
+			System.out.println(name+"已经交过了作业");
 		}
 	}
 
@@ -20,6 +25,8 @@ public class Student {
 		if(state){
 			state = !state;
 			System.out.println(name+"取回了作业");
+		}else{
+			System.out.println(name+"还没有交过作业");
 		}
 	}
 	

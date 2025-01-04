@@ -4,7 +4,14 @@ import java.io.File;
 import java.util.ArrayList;
 
 /**
- * @author Share 2017.9.10
+ * 装饰模式(包装器，扩展)
+ * 动态地给对象添加一些额外的职责。就功能来说装饰模式相比生成子类更为灵活
+ *
+ * Decorator Pattern(Another Name: Wrapper)
+ * Attach additional responsibilities to an object dynamically. Decorators provide a
+ * flexible alternative to subclassing for extending functionality.
+ *
+ * 装饰模式中非常重要的一点就是“具体组件"和“装饰"都是“抽象组件"的子类
  */
 public class Application {
 	/*
@@ -16,13 +23,10 @@ public class Application {
 		File file = new File(CLASS_PATH+"article.txt");
 		File file2 = new File(CLASS_PATH+"article2.txt");
 		ReadWord rw = new ReadEnglishWord();
-		Decorator rw1 = new WordDecorator(rw, file2);
+		ReadWord rw1 = new WordDecorator(rw, file2);
 		ArrayList<String> wordList = rw1.readWord(file);
 		for(String s : wordList)
 			System.out.println(s);
-		
-		
-		
 	}
 
 }

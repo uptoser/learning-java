@@ -20,23 +20,23 @@ public class Application {
 	 */
 	public static void main(String[] args) {
 		// 学生
-		Student s1 = new Student("小红");
-		Student s2 = new Student("小白");
-		Student s3 = new Student("小黑");
+		Student s1 = new Student("小A");
+		Student s2 = new Student("小B");
+		Student s3 = new Student("小C");
 		// 老师
 		Teacher teacher = new Teacher();
 		// 作业列表
-		ArrayList<Student> studentList = new ArrayList<Student>();
+		ArrayList<Student> studentList = new ArrayList<>();
 		// 老师让学生上交作业（拿回作业）
-		System.out.println("-----------老师让学生上交作业（拿回作业）------------");
+		System.out.println("-----------老师让学生上交作业------------");
 		Command command1 = new OperateProject(s1, studentList);
-		Command command2 = new OperateProject(s2, studentList);
-		Command command3 = new OperateProject(s3, studentList);
 		teacher.setCommand(command1);
 		teacher.execute();
 		teacher.undo();
+		Command command2 = new OperateProject(s2, studentList);
 		teacher.setCommand(command2);
 		teacher.execute();
+		Command command3 = new OperateProject(s3, studentList);
 		teacher.setCommand(command3);
 		teacher.execute();
 		// 老师查看谁交了作业
@@ -44,10 +44,10 @@ public class Application {
 		Command command4 = new PrintProject(studentList);
 		teacher.setCommand(command4);
 		teacher.execute();
-		// 学生全部上交作业并查看作业列表
+		// 批处理命令：学生全部上交作业并查看作业列表
 		System.out.println("-----------学生全部上交作业并查看作业列表------------");
-		ArrayList<Command> commandList = new ArrayList<Command>();
-		studentList = new ArrayList<Student>();
+		ArrayList<Command> commandList = new ArrayList<>();
+		studentList.clear();
 		s1.setState(false);
 		s2.setState(false);
 		s3.setState(false);
@@ -59,8 +59,8 @@ public class Application {
 		commandList.add(command2);
 		commandList.add(command3);
 		commandList.add(command4);
-		Command command5 = new MacroCommand(commandList);
-		teacher.setCommand(command5);
+		Command macroCommand = new MacroCommand(commandList);
+		teacher.setCommand(macroCommand);
 		teacher.execute();
 	}
 

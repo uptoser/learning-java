@@ -21,7 +21,7 @@ public class CustomerA implements Observer {
 		if (o instanceof PhoneShop)
 			System.out.println("尊敬的" + customerName + "客户：您关注的手机价格为"
 					+ ((PhoneShop) o).getPrice());
-		else if(o instanceof ComputerShop)
+		if(o instanceof ComputerShop)
 			System.out.println("尊敬的" + customerName + "客户：您关注的电脑价格为"
 					+ ((ComputerShop) o).getPrice());
 	}

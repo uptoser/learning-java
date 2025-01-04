@@ -6,5 +6,5 @@ package com.uptoser.java.design_patterns.behavioral_patterns.observer.group1;
  * 即要求具体观察者都通过实现 hearTelephone()方法（模拟接听电话）来更新数据。
  */
 public interface Observer {
-    public void hearTelephone(String hearMess);
+    public void hearTelephone(String hearMessage);
 }

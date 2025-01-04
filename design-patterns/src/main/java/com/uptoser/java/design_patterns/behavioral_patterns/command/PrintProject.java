@@ -2,6 +2,9 @@ package com.uptoser.java.design_patterns.behavioral_patterns.command;
 
 import java.util.ArrayList;
 
+/**
+ * 批作业类：实现了命令接口
+ */
 public class PrintProject implements Command {
 	
 	ArrayList<Student> studentList;
@@ -10,6 +13,9 @@ public class PrintProject implements Command {
 		this.studentList = studentList;
 	}
 
+	/**
+	 * 检查学生作业上交情况
+	 */
 	@Override
 	public void execute() {
 		if(studentList.size()!=0){

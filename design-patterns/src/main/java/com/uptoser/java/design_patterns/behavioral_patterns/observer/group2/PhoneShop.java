@@ -3,11 +3,10 @@ package com.uptoser.java.design_patterns.behavioral_patterns.observer.group2;
 import java.util.Observable;
 
 public class PhoneShop extends Observable {
-
 	private String phoneName;
 	private double Price;
 	private int level;
-	
+
 	public void getMsg(){
 		notifyObservers();
 	}
@@ -33,9 +32,4 @@ public class PhoneShop extends Observable {
 		setChanged();
 		this.level = level;
 	}
-
-
-
-
-	
 }

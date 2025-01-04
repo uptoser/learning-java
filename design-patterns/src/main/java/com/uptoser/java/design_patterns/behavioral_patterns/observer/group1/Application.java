@@ -13,16 +13,21 @@ package com.uptoser.java.design_patterns.behavioral_patterns.observer.group1;
 public class Application{
    public static void main(String args[]){
       final String CLASS_PATH = ClassLoader.getSystemResource("").getPath();
-      SeekJobCenter center=new SeekJobCenter();//具体主题 center
-      UniverStudent zhangLin=new UniverStudent(center,CLASS_PATH+"A.txt");//具体观察者 zhangLin
-      HaiGui wangHao=new HaiGui(center,CLASS_PATH+"B.txt");//具体观察者 wangHao
-      center.giveNewMess("腾辉公司需要10个java程序员。");//具体主题给出新信息
-      center.notifyObservers();//具体主题通知信息
+      //具体主题 center
+      SeekJobCenter center=new SeekJobCenter();
+      //具体观察者 A
+      UniversityStudent a=new UniversityStudent(center,CLASS_PATH+"A.txt");
+      //具体观察者 B
+      Returnee b=new Returnee(center,CLASS_PATH+"B.txt");
+      //具体主题给出新信息
+      center.giveNewMess("腾辉公司需要10个java程序员。");
+      center.notifyObservers();
       center.giveNewMess("海景公司需要8个动画设计师。");
       center.notifyObservers();
       center.giveNewMess("仁海公司需要9个电工。");
       center.notifyObservers();
-      center.giveNewMess("仁海公司需要9个电工。");//信息不是新的
+      //信息不是新的
+      center.giveNewMess("仁海公司需要9个电工。");
       center.notifyObservers();//观察者不会执行更新操作
    }
 }

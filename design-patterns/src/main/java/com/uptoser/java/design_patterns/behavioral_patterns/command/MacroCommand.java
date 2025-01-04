@@ -2,6 +2,9 @@ package com.uptoser.java.design_patterns.behavioral_patterns.command;
 
 import java.util.ArrayList;
 
+/**
+ * 宏命令接口（批处理）
+ */
 public class MacroCommand implements Command {
 	ArrayList<Command> commandList;
 	
