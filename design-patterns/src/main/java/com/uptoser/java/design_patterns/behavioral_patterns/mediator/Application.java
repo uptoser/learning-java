@@ -1,26 +1,31 @@
 package com.uptoser.java.design_patterns.behavioral_patterns.mediator;
 
 /**
- * 中介者模式（Mediator Pattern）是用来降低多个对象和类之间的通信复杂性。
- * 这种模式提供了一个中介类，该类通常处理不同类之间的通信，并支持松耦合，使代码易于维护。中介者模式属于行为型模式。
+ * 中介者模式（Mediator Pattern）
+ * 用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显示地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。
+ * 中介者模式属于行为型模式。
  *
- * 应用实例：
- * 1、中国加入 WTO 之前是各个国家相互贸易，结构复杂，现在是各个国家通过 WTO 来互相贸易。
- * 2、机场调度系统。
- * 3、MVC 框架，其中C（控制器）就是 M（模型）和 V（视图）的中介者。
+ * Mediator Pattern
+ * Define an object that encapsulates how a set of objects interact. Mediator promotes
+ * loose coupling by keeping objects from referring to each other explicitly, and it lets you
+ * vary their interaction independently.
+ *
  */
 public class Application {
-    /**
-     * 我们通过聊天室实例来演示中介者模式。实例中，多个用户可以向聊天室发送消息，聊天室向所有的用户显示消息。
-     * 我们将创建两个类 ChatRoom 和 User。User 对象使用 ChatRoom 方法来分享他们的消息。
-     * @param args
-     */
     public static void main(String[] args) {
-        User robert = new User("Robert");
-        User john = new User("John");
+        ConcreteMediator mediator=new ConcreteMediator();
+        ColleagueA colleagueA=new ColleagueA(mediator);
+        ColleagueB colleagueB=new ColleagueB(mediator);
+        ColleagueC colleagueC=new ColleagueC(mediator);
+        colleagueA.setName("A国");
+        colleagueB.setName("B国");
+        colleagueC.setName("C国");
 
-        robert.sendMessage("Hi! John!");
-        john.sendMessage("Hello! Robert!");
-
+        String [] messA={"要求归还曾抢夺的100斤土豆","要求归还曾抢夺的20头牛"};
+        colleagueA.giveMess(messA);
+        String [] messB={"要求归还曾抢夺的10只公鸡","要求归还曾抢夺的15匹马"};
+        colleagueB.giveMess(messB);
+        String [] messC={"要求归还曾抢夺的300斤小麦","要求归还曾抢夺的50头驴"};
+        colleagueC.giveMess(messC);
     }
 }

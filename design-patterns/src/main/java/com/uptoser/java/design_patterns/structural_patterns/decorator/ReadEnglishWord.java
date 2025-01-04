@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ReadEnglishWord extends ReadWord {
+public class ReadEnglishWord implements ReadWord {
 
 	@Override
 	public ArrayList<String> readWord(File file) {

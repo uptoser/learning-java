@@ -25,7 +25,7 @@ public class Application{
         beijing.handleRequest(number);
     }
     public static void main(String args[]){
-        Application  application=new  Application();
+        Application application=new  Application();
         application.createChain();
         application.reponseClient("77720810340930632");;
     }
