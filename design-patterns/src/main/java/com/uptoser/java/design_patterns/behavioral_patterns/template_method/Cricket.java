@@ -1,5 +1,8 @@
 package com.uptoser.java.design_patterns.behavioral_patterns.template_method;
 
+/**
+ * 具体模板 (Concrete Template)
+ */
 public class Cricket extends Game {
 
     @Override

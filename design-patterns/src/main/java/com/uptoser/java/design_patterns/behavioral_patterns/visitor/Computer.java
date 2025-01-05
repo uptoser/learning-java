@@ -1,11 +1,16 @@
 package com.uptoser.java.design_patterns.behavioral_patterns.visitor;
 
+/**
+ * 电脑整体
+ */
 public class Computer implements ComputerPart {
-
+    /*
+     * 对象结构 (Object Structure) ：一个集合，用于存放 Element 对象，提供遍历它自己的方法
+     */
     ComputerPart[] parts;
 
     public Computer(){
-        parts = new ComputerPart[] {new Mouse(), new Keyboard(), new Monitor()};
+        parts = new ComputerPart[] {new Mouse(), new Keyboard(), new Monitor(1), new Monitor(2)};
     }
 
 
