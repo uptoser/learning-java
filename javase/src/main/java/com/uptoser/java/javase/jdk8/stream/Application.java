@@ -1,5 +1,7 @@
 package com.uptoser.java.javase.jdk8.stream;
 
+import org.junit.Test;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -55,10 +57,11 @@ public class Application {
             new Dish("prawns", false, 300, Dish.Type.FISH),
             new Dish("salmon", false, 450, Dish.Type.FISH));
 
-    public static void main(String[] args) {
-        /*
-         第一个流操作  筛选（filter）、提取（map）或截断（limit）
-         */
+    /*
+    第一个流操作  筛选（filter）、提取（map）或截断（limit）
+    */
+    @Test
+    public void test1(){
         List<String> threeHighCaloricDishNames =
                 menu.stream()
                         .filter(dish -> dish.getCalories() > 300)
@@ -76,9 +79,13 @@ public class Application {
 //        s.forEach(System.out::println);//这里会抛一个异常
 
         System.out.println("--------------------------------------------------------");
-        /*
-        中间操作 filter map limit sorted distinct 终端操作 forEach count collect
-         */
+    }
+
+    /*
+    中间操作 filter map limit sorted distinct 终端操作 forEach count collect
+     */
+    @Test
+    public void test2(){
         List<String> names =
                 menu.stream()
                         .filter(dish -> {
@@ -102,10 +109,12 @@ public class Application {
                 .distinct()
                 .forEach(System.out::println);
         System.out.println("--------------------------------------------------------");
-        /*
-        使用谓词对流进行切片
-        jdk 9  takeWhile和dropWhile
-         */
+    }
+    /*
+    使用谓词对流进行切片
+     */
+    @Test
+    public void test3(){
         List<Dish> dishes1 = menu
                 .stream()
                 .filter(dish -> dish.getCalories() > 300)
@@ -119,8 +128,14 @@ public class Application {
         dishes2.forEach(System.out::println);
         System.out.println("--------------------------------------------------------");
          /*
-        映射
+        jdk 9  takeWhile和dropWhile
          */
+    }
+    /*
+    映射
+     */
+    @Test
+    public void test4(){
         // 流的扁平化 flatMap
         List<String> words = Arrays.asList("Hello", "World");
         words.stream()
@@ -138,9 +153,12 @@ public class Application {
         integers1.stream().flatMap(integer1 -> integers2.stream().map(integer2 -> "(" + integer1 + "," + integer2 + ")"))
                 .collect(toList()).forEach(System.out::println);
         System.out.println("--------------------------------------------------------");
-         /*
-        查找和匹配  allMatch、anyMatch、noneMatch、findFirst和findAny
-         */
+    }
+     /*
+    查找和匹配  allMatch、anyMatch、noneMatch、findFirst和findAny
+     */
+    @Test
+    public void test5(){
         //检查谓词是否至少匹配一个元素 菜单里面是否有素食
         if (menu.stream().anyMatch(Dish::isVegetarian)) {
             System.out.println("The menu is (somewhat) vegetarian friendly!!");
@@ -158,10 +176,14 @@ public class Application {
         menu.stream().filter(d -> d.getCalories() > 500).findFirst().ifPresent(System.out::println);
         System.out.println("--------------------------------------------------------");
 
-        /*
-        归约 reduce   将流中所有元素反复结合起来，得到一个值 这样的查询可以被归类为归约操作（将流归约成一个值） 用函数式编程语言的术语来说，这称为折叠（fold）
-         */
+    }
+    /*
+    归约 reduce   将流中所有元素反复结合起来，得到一个值 这样的查询可以被归类为归约操作（将流归约成一个值） 用函数式编程语言的术语来说，这称为折叠（fold）
+     */
+    @Test
+    public void test6(){
         //元素求和
+        List<Integer> numbers = Arrays.asList(1, 2, 1, 3, 3, 2, 4);
         Integer sum = numbers.stream().reduce(0, (a, b) -> a + b);
         sum = numbers.stream().reduce(0, Integer::sum);
         System.out.println("求和：" + sum);
@@ -173,9 +195,12 @@ public class Application {
         //练习：用map和reduce方法数一数流中有多少个菜呢？
         menu.stream().map(v -> 1).reduce(Integer::sum).ifPresent(System.out::println);
         System.out.println("--------------------------------------------------------");
-        /*
-         * 大练习
-         */
+    }
+    /*
+     * 大练习
+     */
+    @Test
+    public void test7(){
         Trader raoul = new Trader("Raoul", "Cambridge");
         Trader mario = new Trader("Mario", "Milan");
         Trader alan = new Trader("Alan", "Cambridge");
@@ -231,9 +256,12 @@ public class Application {
         Optional<Transaction> smallestTransaction =
                 transactions.stream()
                         .min(comparing(Transaction::getValue));//流支持min和max方法
-        /*
-        数值流
-         */
+    }
+    /*
+    数值流
+     */
+    @Test
+    public void test8(){
         //原始类型流特化  IntStream、DoubleStream和LongStream / mapToInt、mapToDouble和mapToLong
         //默认值OptionalInt    对于三种原始流特化，也分别有一个Optional原始类型特化版本：OptionalInt、OptionalDouble和OptionalLong。
         int calories = menu.stream()       //返回一个Stream<Dish>
@@ -247,9 +275,12 @@ public class Application {
                 .filter(n -> n % 2 == 0);       // 一个从1到100的偶数流
         System.out.println(evenNumbers.count());      // 从1到100有50个偶数
         System.out.println("---------------------------------------------------------");
-        /*
-        构建流
-         */
+    }
+    /*
+    构建流
+     */
+    @Test
+    public void test9(){
         //由值创建流
         Stream<String> stream1 = Stream.of("Modern ", "Java ", "In ", "Action");
         stream1.map(String::toUpperCase).forEach(System.out::println);
@@ -283,10 +314,6 @@ public class Application {
         Stream.generate(Math::random)
                 .limit(5)
                 .forEach(System.out::println);
-
-
-
     }
-
 
 }
