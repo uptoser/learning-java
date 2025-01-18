@@ -1,20 +1,18 @@
 package com.uptoser.java.javase.jdk8.stream;
 
+import com.uptoser.java.javase.jdk8.Dish;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static java.util.Comparator.comparing;
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toList;
+
 
 /**
  * Stream提供了大量的方法进行聚集操作，这些方法既可以是“中间的”（intermediate），也可以是“末端的”（terminal）。
@@ -44,149 +42,137 @@ import static java.util.stream.Collectors.toList;
  * ➢ findAny()：返回流中的任意一个元素。
  */
 public class Application {
-
     //菜肴列表
-    static List<Dish> menu = Arrays.asList(
+    List<Dish> menu = Arrays.asList(
+            new Dish("season fruit", true, 120, Dish.Type.OTHER),
+            new Dish("prawns", false, 300, Dish.Type.FISH),
+            new Dish("rice", true, 350, Dish.Type.OTHER),
+            new Dish("chicken", false, 400, Dish.Type.MEAT),
+            new Dish("salmon", false, 450, Dish.Type.FISH),
             new Dish("pork", false, 800, Dish.Type.MEAT),
             new Dish("beef", false, 700, Dish.Type.MEAT),
-            new Dish("chicken", false, 400, Dish.Type.MEAT),
             new Dish("french fries", true, 530, Dish.Type.OTHER),
-            new Dish("rice", true, 350, Dish.Type.OTHER),
-            new Dish("season fruit", true, 120, Dish.Type.OTHER),
-            new Dish("pizza", true, 550, Dish.Type.OTHER),
-            new Dish("prawns", false, 300, Dish.Type.FISH),
-            new Dish("salmon", false, 450, Dish.Type.FISH));
-
+            new Dish("pizza", true, 550, Dish.Type.OTHER));
     /*
-    第一个流操作  筛选（filter）、提取（map）或截断（limit）
-    */
-    @Test
-    public void test1(){
-        List<String> threeHighCaloricDishNames =
-                menu.stream()
-                        .filter(dish -> dish.getCalories() > 300)
-                        .map(Dish::getName)
-                        .limit(3)
-                        .collect(toList());
-        System.out.println(threeHighCaloricDishNames);
-        System.out.println("--------------------------------------------------------");
-        /*
-        流只能消费一次
-         */
-        List<String> title = Arrays.asList("Modern", "Java", "In", "Action");
-        Stream<String> s = title.stream();
-        s.forEach(System.out::println);
-//        s.forEach(System.out::println);//这里会抛一个异常
-
-        System.out.println("--------------------------------------------------------");
-    }
-
-    /*
-    中间操作 filter map limit sorted distinct 终端操作 forEach count collect
+    筛选
      */
     @Test
     public void test2(){
-        List<String> names =
-                menu.stream()
-                        .filter(dish -> {
-                            System.out.println("filtering:" + dish.getName());
-                            return dish.getCalories() > 300;
-                        })
-                        .map(dish -> {
-                            System.out.println("mapping:" + dish.getName());
-                            return dish.getName();
-                        })
-                        .limit(3)
-                        .collect(toList());
-        System.out.println(names);//1.尽管很多菜的热量都高于300卡路里，但只选出了前三个(短路)2.尽管filter和map是两个独立的操作，但它们合并到同一次遍历中了(循环合并)
-        System.out.println("--------------------------------------------------------");
-        /*
-        distinct 它会返回一个元素各异   确保没有重复
-         */
+        //distinct   去重
         List<Integer> numbers = Arrays.asList(1, 2, 1, 3, 3, 2, 4);
         numbers.stream()
                 .filter(i -> i % 2 == 0)
                 .distinct()
                 .forEach(System.out::println);
         System.out.println("--------------------------------------------------------");
-    }
-    /*
-    使用谓词对流进行切片
-     */
-    @Test
-    public void test3(){
-        List<Dish> dishes1 = menu
-                .stream()
-                .filter(dish -> dish.getCalories() > 300)
-                .limit(3)//该方法只选出了符合谓词的头三个元素
-                .collect(toList());
-
-        List<Dish> dishes2 = menu.stream()
-                .filter(d -> d.getCalories() > 300)
-                .skip(2)//跳过热量超过300卡路里的头两道菜
-                .collect(toList());
-        dishes2.forEach(System.out::println);
+        //切片  takeWhile 遭遇第一个不符合要求的元素时停止处理
+        List<Dish> filteredMenu
+                = menu.stream()
+                .filter(dish -> dish.getCalories() < 320)
+                .collect(Collectors.toList());
+        System.out.println(filteredMenu);
+        //切片  dropWhile 丢弃所有谓词结果为false的元素，一旦遭遇谓词计算的结果为true，它就停止处理，并返回所有剩余的元素
+        List<Dish> slicedMenu2
+                = menu.stream()
+                .dropWhile(dish -> dish.getCalories() < 320)
+                .collect(Collectors.toList());
+        System.out.println(slicedMenu2);
         System.out.println("--------------------------------------------------------");
-         /*
-        jdk 9  takeWhile和dropWhile
-         */
+        //截短
+        List<Dish> dishes1 = menu.stream()
+                .filter(Dish::isVegetarian)
+                .limit(3)
+                .collect(Collectors.toList());
+        System.out.println(dishes1);
+        System.out.println("--------------------------------------------------------");
+        //跳过
+        List<Dish> dishes2 = menu.stream()
+                .filter(Dish::isVegetarian)
+                .skip(3)
+                .collect(Collectors.toList());
+        System.out.println(dishes2);
     }
     /*
     映射
      */
     @Test
     public void test4(){
-        // 流的扁平化 flatMap
+        List<String> dishNames = menu.stream()
+                .map(Dish::getName)
+                .collect(Collectors.toList());
+        System.out.println(dishNames);
+        System.out.println("==============================================");
+        /* *********** 流的扁平化 flatMap ****************/
         List<String> words = Arrays.asList("Hello", "World");
-        words.stream()
+        //返回成了两个数组
+        List<String[]> wordArray = words.stream()
+                .map(word -> word.split(""))
+                .distinct()
+                .collect(Collectors.toList());
+        wordArray.stream().map(Arrays::toString).forEach(System.out::println);
+        System.out.println("--------------------------------------------------------");
+        //真正想要的是一个字符流
+        List<String> wordString = words.stream()
                 .map(word -> word.split(""))
                 .flatMap(Arrays::stream)
                 .distinct()
-                .collect(toList()).forEach(System.out::println);
-        System.out.println("--------------------------------------------------------");
-        //练习：给定一个数字列表，如何返回一个由每个数的平方构成的列表呢？例如，给定[1, 2, 3, 4, 5]，应该返回[1, 4, 9, 16, 25]。
-        Arrays.asList(1, 2, 3, 4, 5).stream().map(i -> i * i).collect(toList()).forEach(System.out::println);
-        System.out.println("--------------------------------------------------------");
+                .collect(Collectors.toList());
+        System.out.println(wordString);
+        System.out.println("===================================================");
         //练习：给定两个数字列表，如何返回所有的数对呢？例如，给定列表[1, 2, 3]和列表[3, 4]，应该返回[(1, 3), (1, 4), (2, 3), (2, 4), (3, 3),(3, 4)]
         List<Integer> integers1 = Arrays.asList(1, 2, 3);
         List<Integer> integers2 = Arrays.asList(3, 4);
-        integers1.stream().flatMap(integer1 -> integers2.stream().map(integer2 -> "(" + integer1 + "," + integer2 + ")"))
-                .collect(toList()).forEach(System.out::println);
-        System.out.println("--------------------------------------------------------");
+        integers1.stream().flatMap(
+                integer1 -> integers2.stream()
+                        .map(integer2 -> "(" + integer1 + "," + integer2 + ")")
+                )
+                .collect(Collectors.toList()).forEach(System.out::println);
     }
      /*
     查找和匹配  allMatch、anyMatch、noneMatch、findFirst和findAny
      */
     @Test
     public void test5(){
+        /* **************************匹配******************************* */
         //检查谓词是否至少匹配一个元素 菜单里面是否有素食
         if (menu.stream().anyMatch(Dish::isVegetarian)) {
             System.out.println("The menu is (somewhat) vegetarian friendly!!");
         }
-        System.out.println("--------------------------------------------------------");
         //检查谓词是否匹配所有元素
         boolean isHealthy1 = menu.stream().allMatch(dish -> dish.getCalories() < 1000);
+        System.out.println(isHealthy1);
         //确保流中没有任何元素与给定的谓词匹配
         boolean isHealthy2 = menu.stream().noneMatch(dish -> dish.getCalories() >= 1000);
-
-        //查找元素
+        System.out.println(isHealthy2);
+        System.out.println("--------------------------------------------------------");
+        /* **************************查找******************************* */
+        //找到一道素食菜肴
         Optional<Dish> dish = menu.stream().filter(Dish::isVegetarian).findAny();
         dish.ifPresent(d -> System.out.println(d.getName()));
         //为什么会同时有findFirst和findAny呢？答案是并行。找到第一个元素在并行上限制更多。如果你不关心返回的元素是哪个，请使用findAny，因为它在使用并行流时限制较少。
         menu.stream().filter(d -> d.getCalories() > 500).findFirst().ifPresent(System.out::println);
         System.out.println("--------------------------------------------------------");
-
+        /*
+        Optional<T>类（java.util.Optional）是一个容器类，代表一个值存在或不存在。
+        ➢ isPresent()将在Optional包含值的时候返回true, 否则返回false。
+        ➢ ifPresent(Consumer<T> block)会在值存在的时候执行给定的代码块。
+        ➢ T get()会在值存在时返回值，否则抛出一个NoSuchElement异常。
+        ➢ T orElse(T other)会在值存在时返回值，否则返回一个默认值。
+         */
     }
     /*
-    归约 reduce   将流中所有元素反复结合起来，得到一个值 这样的查询可以被归类为归约操作（将流归约成一个值） 用函数式编程语言的术语来说，这称为折叠（fold）
+    归约 reduce
      */
     @Test
     public void test6(){
         //元素求和
         List<Integer> numbers = Arrays.asList(1, 2, 1, 3, 3, 2, 4);
+        //有初始值
         Integer sum = numbers.stream().reduce(0, (a, b) -> a + b);
         sum = numbers.stream().reduce(0, Integer::sum);
         System.out.println("求和：" + sum);
+        //无初始值  是会返回一个Optional对象
+        numbers.stream().reduce((a, b) -> (a * b)).ifPresent(System.out::println);
         System.out.println("--------------------------------------------------------");
         //计算最大值
         Optional<Integer> max = numbers.stream().reduce(Integer::max);
@@ -214,7 +200,7 @@ public class Application {
                 new Transaction(alan, 2012, 950)
         );
         //找出2011年发生的所有交易，并按交易额排序（从低到高）
-        transactions.stream().filter(t -> t.getYear() == 2011).sorted(comparing(Transaction::getValue))
+        transactions.stream().filter(t -> t.getYear() == 2011).sorted(Comparator.comparing(Transaction::getValue))
                 .forEach(System.out::println);
         System.out.println("------------");
         //交易员都在哪些不同的城市工作过
@@ -222,21 +208,22 @@ public class Application {
         System.out.println("------------");
         //查找所有来自于剑桥的交易员，并按姓名排序
         transactions.stream().map(Transaction::getTrader).filter(t -> "Cambridge".equals(t.getCity()))
-                .sorted(comparing(Trader::getName)).forEach(System.out::println);
+                .sorted(Comparator.comparing(Trader::getName)).forEach(System.out::println);
         System.out.println("------------");
         //返回所有交易员的姓名字符串，按字母顺序排序
         String reduce = transactions.stream().map(t -> t.getTrader().getName())
                 .distinct()
                 .sorted().reduce("", (n1, n2) -> n1 + " " + n2);
         System.out.println(reduce);
-        System.out.println("------------");
 
         String traderStr =
                 transactions.stream()
                         .map(transaction -> transaction.getTrader().getName())
                         .distinct()
                         .sorted()
-                        .collect(joining());
+                        .collect(Collectors.joining(" "));
+        System.out.println(traderStr);
+        System.out.println("------------");
         //有没有交易员是在米兰工作的
         boolean milan = transactions.stream().anyMatch(transaction -> transaction.getTrader()
                 .getCity()
@@ -255,26 +242,34 @@ public class Application {
         transactions.stream().reduce((t1, t2) -> t1.getValue() < t2.getValue() ? t1 : t2).ifPresent(System.out::println);
         Optional<Transaction> smallestTransaction =
                 transactions.stream()
-                        .min(comparing(Transaction::getValue));//流支持min和max方法
+                        .min(Comparator.comparing(Transaction::getValue));//流支持min和max方法
+        System.out.println(smallestTransaction.orElse(null));
     }
     /*
     数值流
+    使用reduce方法计算流中元素的总和有一个暗含的装箱成本，每个Integer都必须拆箱成一个原始类型，再进行求和
+    Java 8引入了三个原始类型特化流接口来解决这个问题：IntStream、DoubleStream和LongStream，从而避免了暗含的装箱成本
      */
     @Test
     public void test8(){
-        //原始类型流特化  IntStream、DoubleStream和LongStream / mapToInt、mapToDouble和mapToLong
-        //默认值OptionalInt    对于三种原始流特化，也分别有一个Optional原始类型特化版本：OptionalInt、OptionalDouble和OptionalLong。
+        //将流转换为特化版本的常用方法是mapToInt、mapToDouble和mapToLong
+        IntStream intStream = menu.stream().mapToInt(Dish::getCalories);      //将Stream转换为数值流
+        // 将数值流转换为Stream
+        Stream<Integer> stream = intStream.boxed();
+        //求和 IntStream还支持其他的方便方法，如max、min、average等
         int calories = menu.stream()       //返回一个Stream<Dish>
                 .mapToInt(Dish::getCalories)       // 返回一个IntStream
                 .sum();
-        IntStream intStream = menu.stream().mapToInt(Dish::getCalories);      //将Stream转换为数值流
-        Stream<Integer> stream = intStream.boxed();       // 将数值流转换为Stream
-
+        System.out.println(calories);
+        //默认值OptionalInt    对于三种原始流特化，也分别有一个Optional原始类型特化版本：OptionalInt、OptionalDouble和OptionalLong。
+        OptionalInt maxCalories = menu.stream()
+                .mapToInt(Dish::getCalories)
+                .max();
+        System.out.println(maxCalories.orElse(0));
         //数值范围  range和rangeClosed。这两个方法都是第一个参数接受起始值，第二个参数接受结束值。但range是不包含结束值的，rangeClosed则包含结束值
         IntStream evenNumbers = IntStream.rangeClosed(1, 100)       //表示范围[1, 100]
                 .filter(n -> n % 2 == 0);       // 一个从1到100的偶数流
         System.out.println(evenNumbers.count());      // 从1到100有50个偶数
-        System.out.println("---------------------------------------------------------");
     }
     /*
     构建流
@@ -284,9 +279,25 @@ public class Application {
         //由值创建流
         Stream<String> stream1 = Stream.of("Modern ", "Java ", "In ", "Action");
         stream1.map(String::toUpperCase).forEach(System.out::println);
+        //你可以使用empty得到一个空流
+        Stream<String> emptyStream = Stream.empty();
         //由数组创建流
         int[] numbers1 = {2, 3, 5, 7, 11, 13};
         int sum1 = Arrays.stream(numbers1).sum();      // 总和是41
+        System.out.println("---------------------------------------------------------");
+        //由可空对象创建流
+        Map<String,String> map = new HashMap<>();
+        map.put("name","Jack");
+        map.put("age","22");
+        map.put("note",null);
+        //为了使用流处理它，你需要显式地检查对象值是否为空
+        String noteValue = map.get("note");
+        Stream<String> noteValueStream = noteValue == null ? Stream.empty() : Stream.of(noteValue);
+        //借助于Stream.ofNullable，这段代码可以改写
+        noteValueStream = Stream.ofNullable(map.get("note"));
+        Stream<String> values =
+                Stream.of("name", "age", "note")
+                        .flatMap(key -> Stream.ofNullable(map.get(key)));
         System.out.println("---------------------------------------------------------");
         //由文件生成流
         long uniqueWords = 0;
@@ -300,17 +311,22 @@ public class Application {
         System.out.println(uniqueWords);
         System.out.println("---------------------------------------------------------");
 
-        //由函数生成流：创建无限流
+        /* ***********由函数生成流：创建无限流************ */
+        //迭代
         Stream.iterate(0, n -> n + 2)//iterate方法接受一个初始值（在这里是0），还有一个依次应用在每个产生的新值上的Lambda（UnaryOperator<t>类型）
-                .limit(10)
+                .limit(5)
                 .forEach(System.out::println);
         System.out.println("---------------------------------------------------------");
-
-        //测验：生成斐波那契元组序列中的前20个元素。
-        Stream.iterate(new int[]{0, 1}, a -> new int[]{a[1], a[0] + a[1]}).limit(20)
+        //通过iterate生成斐波那契元组序列中的前5个元素。
+        Stream.iterate(new int[]{0, 1}, a -> new int[]{a[1], a[0] + a[1]}).limit(5)
                 .forEach(t -> System.out.println("(" + t[0] + "," + t[1] + ")"));
         System.out.println("---------------------------------------------------------");
-        //generate  它接受一个Supplier<T>类型的Lambda提供新的值
+        //Java 9对iterate方法进行了增强，它现在可以支持谓词操作了
+        //你可以由0开始生成一个数字序列，一旦数字大于100就停下来
+        IntStream.iterate(0, n -> n < 100, n -> n + 4)
+                .forEach(System.out::println);
+        System.out.println("---------------------------------------------------------");
+        //生成 generate  它接受一个Supplier<T>类型的Lambda提供新的值
         Stream.generate(Math::random)
                 .limit(5)
                 .forEach(System.out::println);

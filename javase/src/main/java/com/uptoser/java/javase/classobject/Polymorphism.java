@@ -1,6 +1,5 @@
 package com.uptoser.java.javase.classobject;
 
-import org.omg.CORBA.Object;
 
 /**
  * 多态

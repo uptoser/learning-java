@@ -1,5 +1,7 @@
 package com.uptoser.java.javase.jdk8.stream;
-
+/**
+ * 交易员
+ */
 public class Trader{
     private final String name;
     private final String city;

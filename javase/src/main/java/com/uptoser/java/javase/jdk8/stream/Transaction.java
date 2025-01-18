@@ -1,5 +1,8 @@
 package com.uptoser.java.javase.jdk8.stream;
 
+/**
+ * 交易
+ */
 public class Transaction{
     private final Trader trader;
     private final int year;

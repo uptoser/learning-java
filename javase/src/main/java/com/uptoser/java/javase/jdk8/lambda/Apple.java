@@ -6,6 +6,11 @@ public class Apple {
     private Integer weight;
     private String country;
 
+    public Apple(Integer weight,Color color,String country) {
+        this.weight = weight;
+        this.color = color;
+        this.country = country;
+    }
     public Apple(Integer weight) {
         this.weight = weight;
     }
